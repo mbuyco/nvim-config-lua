@@ -2,4 +2,4 @@
 
 My custom configuration for Neovim IDE.
 
-Currently the configuration mainly supports PHP development. In the future developments, my goal is to use it for the programming languages that I am familiar with such as Python, Ruby, JavaScript and Java (and more)!
+Currently the configuration mainly supports PHP development. This repository will evolve overtime to support programming languages that I will be using in my day-to-day work.
