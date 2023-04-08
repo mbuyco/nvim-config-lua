@@ -8,7 +8,12 @@ local lspconfig = require('lspconfig')
 --     ['rust-analyzer'] = {},
 --   },
 -- }
-lspconfig.phpactor.setup{}
+lspconfig.phpactor.setup{
+    on_attach = on_attach,
+    init_options = {
+        ["language_server_phpstan.enabled"] = true
+    }
+}
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
