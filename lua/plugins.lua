@@ -36,6 +36,7 @@ return require('packer').startup(function()
     use 'posva/vim-vue'
     use 'preservim/nerdcommenter'
     use 'preservim/nerdtree'
+    use 'Xuyuanp/nerdtree-git-plugin'
     use 'tpope/vim-fugitive'
     use {
         'windwp/nvim-autopairs',
@@ -57,4 +58,5 @@ return require('packer').startup(function()
         require('gitsigns').setup()
       end
     }
+    use 'jose-elias-alvarez/null-ls.nvim'
 end)
