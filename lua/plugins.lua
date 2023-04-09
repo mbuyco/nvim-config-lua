@@ -14,7 +14,6 @@ return require('packer').startup(function()
     use 'tomasiser/vim-code-dark'
     use 'tribela/vim-transparent'
     use 'vigoux/oak'
-    use { "bluz71/vim-nightfly-colors", as = "nightfly" }
 
 	-- general
     use {
@@ -38,10 +37,24 @@ return require('packer').startup(function()
     use 'preservim/nerdcommenter'
     use 'preservim/nerdtree'
     use 'tpope/vim-fugitive'
-    use 'vimwiki/vimwiki'
-    use 'windwp/nvim-autopairs'
+    use {
+        'windwp/nvim-autopairs',
+        config = function()
+            require('nvim-autopairs').setup()
+        end
+    }
     use "nvim-lua/plenary.nvim"
     use 'neovim/nvim-lspconfig'
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     use 'jwalton512/vim-blade'
+    use 'hrsh7th/nvim-cmp'
+    use 'hrsh7th/cmp-nvim-lsp'
+    use 'saadparwaiz1/cmp_luasnip'
+    use 'L3MON4D3/LuaSnip'
+    use {
+      'lewis6991/gitsigns.nvim',
+      config = function()
+        require('gitsigns').setup()
+      end
+    }
 end)
