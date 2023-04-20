@@ -1,3 +1,8 @@
+local status_ok, lualine = pcall(require, 'lspconfig')
+if not status_ok then
+	return
+end
+
 require'lspconfig'.phpactor.setup{
     on_attach = on_attach,
     init_options = {

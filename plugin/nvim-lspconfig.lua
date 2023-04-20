@@ -1,3 +1,8 @@
+local status_ok, lualine = pcall(require, 'lspconfig')
+if not status_ok then
+	return
+end
+
 -- Setup language servers.
 local lspconfig = require('lspconfig')
 
