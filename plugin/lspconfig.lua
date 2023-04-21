@@ -1,13 +1,25 @@
-local status_ok, lualine = pcall(require, 'lspconfig')
+local status_ok, lspconfig = pcall(require, 'lspconfig')
 if not status_ok then
 	return
 end
 
--- Setup language servers.
-local lspconfig = require('lspconfig')
+local status_ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
+if not status_ok then
+	return
+end
+
+local status_ok, luasnip = pcall(require, 'luasnip')
+if not status_ok then
+	return
+end
+
+local status_ok, cmp = pcall(require, 'cmp')
+if not status_ok then
+	return
+end
 
 -- Add additional capabilities supported by nvim-cmp
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local capabilities = cmp_nvim_lsp.default_capabilities()
 
 lspconfig.phpactor.setup{
     on_attach = on_attach,
@@ -26,11 +38,7 @@ for _, lsp in ipairs(servers) do
   }
 end
 
--- luasnip setup
-local luasnip = require 'luasnip'
-
 -- nvim-cmp setup
-local cmp = require 'cmp'
 cmp.setup {
   snippet = {
     expand = function(args)
