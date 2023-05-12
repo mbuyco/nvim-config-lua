@@ -1,3 +1,6 @@
+require('plugins')
 require('options')
 require('keymaps')
-require('plugins')
+
+-- Default colorscheme
+vim.cmd('colorscheme everforest')

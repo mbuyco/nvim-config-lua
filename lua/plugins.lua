@@ -73,15 +73,9 @@ return packer.startup(function(use)
     'nvim-telescope/telescope-fzf-native.nvim',
     run = 'make',
   }
-  -- Default colorscheme
-  use {
-    'folke/tokyonight.nvim',
-    config = function()
-      vim.cmd('colorscheme tokyonight')
-    end
-  }
 
   -- Colorscheme
+  use 'folke/tokyonight.nvim'
   use 'gruvbox-community/gruvbox'
   use 'jacoborus/tender.vim'
   use 'joshdick/onedark.vim'
@@ -105,9 +99,7 @@ return packer.startup(function(use)
   use 'preservim/nerdtree'
   use 'Xuyuanp/nerdtree-git-plugin'
   use 'tpope/vim-fugitive'
-  use 'nvim-lua/plenary.nvim'
   use 'neovim/nvim-lspconfig'
-  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   use 'jwalton512/vim-blade'
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-nvim-lsp'
