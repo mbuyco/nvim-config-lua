@@ -10,6 +10,3 @@ vim.g.NERDDefaultAlign = 'left'
 -- use compact syntax for prettified multi-line comments
 vim.g.NERDCompactSexyComs = 1
 
--- custom mapping
-vim.api.nvim_set_keymap('n', '<C-_>', '<leader>c<Space>', { silent = true })
-vim.api.nvim_set_keymap('v', '<C-_>', '<leader>c<Space>', { silent = true })
