@@ -73,6 +73,16 @@ return packer.startup(function(use)
     'nvim-telescope/telescope-fzf-native.nvim',
     run = 'make',
   }
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup {
+        toggle = {
+          line = '<C-_>',
+        }
+      }
+    end
+  }
 
   -- Colorscheme
   use 'folke/tokyonight.nvim'
@@ -95,7 +105,6 @@ return packer.startup(function(use)
   use 'nvim-lualine/lualine.nvim'
   use 'phpactor/phpactor'
   use 'posva/vim-vue'
-  use 'preservim/nerdcommenter'
   use 'preservim/nerdtree'
   use 'Xuyuanp/nerdtree-git-plugin'
   use 'tpope/vim-fugitive'
