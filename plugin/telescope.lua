@@ -5,7 +5,16 @@ end
 
 -- You dont need to set any of these options. These are the default ones. Only
 -- the loading is important
-telescope.setup {}
+telescope.setup {
+  defaults = {
+    vimgrep_arguments = {
+      'rg',
+      '--vimgrep',
+      '--smart-case',
+      '-j1'
+    }
+  }
+}
 -- To get fzf loaded and working with telescope, you need to call
 -- load_extension, somewhere after setup function:
 telescope.load_extension('fzf')
