@@ -76,11 +76,7 @@ return packer.startup(function(use)
   use {
     'numToStr/Comment.nvim',
     config = function()
-      require('Comment').setup {
-        toggle = {
-          line = '<C-_>',
-        }
-      }
+      require('Comment').setup()
     end
   }
 
