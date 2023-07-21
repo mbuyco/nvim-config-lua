@@ -111,6 +111,7 @@ return packer.startup(function(use)
   use 'saadparwaiz1/cmp_luasnip'
   use 'L3MON4D3/LuaSnip'
   use 'nvim-telescope/telescope-fzy-native.nvim'
+  use 'stephpy/vim-php-cs-fixer'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
