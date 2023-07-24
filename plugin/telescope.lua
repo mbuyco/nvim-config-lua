@@ -37,22 +37,13 @@ telescope.setup {
     }
   }
 }
--- To get fzf loaded and working with telescope, you need to call
--- load_extension, somewhere after setup function:
+
+-- Load extensions
 telescope.load_extension('fzf')
 telescope.load_extension('fzy_native')
-
--- Live grep from project git root
-function live_grep_git_dir()
-  local git_dir = vim.fn.system(string.format("git -C %s rev-parse --show-toplevel", vim.fn.expand("%:p:h")))
-  git_dir = string.gsub(git_dir, "\n", "") -- remove newline character from git_dir
-  local opts = {
-    cwd = git_dir,
-  }
-  builtin.live_grep(opts)
-end
+telescope.load_extension('live_grep_args')
 
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fg', live_grep_git_dir, {})
+vim.keymap.set('n', '<leader>fg', require('telescope').extensions.live_grep_args.live_grep_args, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})

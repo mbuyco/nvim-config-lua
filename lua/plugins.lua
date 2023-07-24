@@ -56,7 +56,10 @@ return packer.startup(function(use)
   }
   use {
     'nvim-telescope/telescope.nvim', branch = '0.1.x',
-    requires = { {'nvim-lua/plenary.nvim'} }
+    requires = {
+      {'nvim-lua/plenary.nvim'},
+      {'nvim-telescope/telescope-live-grep-args.nvim'},
+    }
   }
   use {
     'lewis6991/gitsigns.nvim',
@@ -111,7 +114,6 @@ return packer.startup(function(use)
   use 'saadparwaiz1/cmp_luasnip'
   use 'L3MON4D3/LuaSnip'
   use 'nvim-telescope/telescope-fzy-native.nvim'
-  use 'stephpy/vim-php-cs-fixer'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
