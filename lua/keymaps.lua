@@ -2,9 +2,9 @@
 vim.cmd('let mapleader = "\\<Tab>"')
 
 -- ctrl+s save
-vim.api.nvim_set_keymap('n', '<C-S>', ':up<CR>', { noremap = true })
-vim.api.nvim_set_keymap('v', '<C-S>', '<C-C>:up<CR>', { noremap = true })
-vim.api.nvim_set_keymap('i', '<C-S>', '<C-O>:up<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<C-S>', ':w<CR>', { noremap = true })
+vim.api.nvim_set_keymap('v', '<C-S>', '<C-C>:w<CR>', { noremap = true })
+vim.api.nvim_set_keymap('i', '<C-S>', '<C-O>:w<CR>', { noremap = true })
 
 -- increment
 vim.api.nvim_set_keymap('n', '+', '<C-a>', { noremap = true })
