@@ -22,6 +22,18 @@ telescope.setup {
         ["<C-j>"] = "cycle_history_next",
         ["<C-k>"] = "cycle_history_prev"
       }
+    },
+    extensions = {
+      fzf = {
+        fuzzy = true,
+        override_generic_sorter = true,
+        -- override_file_sorter = true,
+        case_mode = "smart_case",
+      },
+      fzy_native = {
+        override_generic_sorter = false,
+        override_file_sorter = true,
+      }
     }
   }
 }
