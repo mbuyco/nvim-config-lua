@@ -13,10 +13,6 @@ vim.api.nvim_set_keymap('n', '-', '<C-x>', { noremap = true })
 -- :W sudo saves the file
 vim.cmd([[command W w !sudo tee % > /dev/null]])
 
--- search for selected text, forwards or backwards
-vim.api.nvim_set_keymap('v', '*', [[:<C-U>let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>\gvy/<C-R>=&ic?'\c':'\C'<CR><C-R><C-R>=substitute(escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>\gVzv:call setreg('"', old_reg, old_regtype)<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', '#', [[:<C-U>let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>\gvy?<C-R>=&ic?'\c':'\C'<CR><C-R><C-R>=substitute(escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>\gVzv:call setreg('"', old_reg, old_regtype)<CR>S]], { noremap = true, silent = true })
-
 -- disable highlight when <leader><cr> is pressed
 vim.api.nvim_set_keymap('n', '<leader><cr>', ':noh<cr>', { noremap = true, silent = true })
 

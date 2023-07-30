@@ -14,6 +14,7 @@ telescope.setup {
       'rg',
       '--vimgrep',
       '--smart-case',
+      '--hidden',
       '-j1'
     },
     mappings = {
