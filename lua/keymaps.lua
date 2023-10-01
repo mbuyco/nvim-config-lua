@@ -1,5 +1,5 @@
 -- leader key
-vim.cmd('let mapleader = "\\<Tab>"')
+vim.cmd('let mapleader = " "')
 
 -- ctrl+s save
 vim.api.nvim_set_keymap('n', '<C-S>', ':w<CR>', { noremap = true })

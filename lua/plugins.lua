@@ -97,23 +97,23 @@ return packer.startup(function(use)
   use 'vigoux/oak'
 
   -- General
+  use 'L3MON4D3/LuaSnip'
+  use 'Xuyuanp/nerdtree-git-plugin'
   use 'christoomey/vim-tmux-navigator'
   use 'hashivim/vim-terraform'
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/nvim-cmp'
+  use 'jwalton512/vim-blade'
   use 'mattn/emmet-vim'
   use 'mhinz/vim-startify'
+  use 'neovim/nvim-lspconfig'
   use 'nvim-lualine/lualine.nvim'
+  use 'nvim-telescope/telescope-fzy-native.nvim'
   use 'phpactor/phpactor'
   use 'posva/vim-vue'
   use 'preservim/nerdtree'
-  use 'Xuyuanp/nerdtree-git-plugin'
-  use 'tpope/vim-fugitive'
-  use 'neovim/nvim-lspconfig'
-  use 'jwalton512/vim-blade'
-  use 'hrsh7th/nvim-cmp'
-  use 'hrsh7th/cmp-nvim-lsp'
   use 'saadparwaiz1/cmp_luasnip'
-  use 'L3MON4D3/LuaSnip'
-  use 'nvim-telescope/telescope-fzy-native.nvim'
+  use 'tpope/vim-fugitive'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
@@ -122,5 +122,5 @@ return packer.startup(function(use)
   end
 
   -- Default colorscheme
-  vim.cmd [[colorscheme gruvbox]]
+  vim.cmd [[colorscheme monokai]]
 end)
