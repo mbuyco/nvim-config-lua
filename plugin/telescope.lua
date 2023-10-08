@@ -30,10 +30,6 @@ telescope.setup {
         override_generic_sorter = true,
         -- override_file_sorter = true,
         case_mode = "smart_case",
-      },
-      fzy_native = {
-        override_generic_sorter = false,
-        override_file_sorter = true,
       }
     }
   }
@@ -41,7 +37,6 @@ telescope.setup {
 
 -- Load extensions
 telescope.load_extension('fzf')
-telescope.load_extension('fzy_native')
 telescope.load_extension('live_grep_args')
 
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})

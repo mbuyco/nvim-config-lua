@@ -3,4 +3,6 @@ if not status_ok then
 	return
 end
 
-autopairs.setup()
+autopairs.setup {
+  map_cr = true
+}

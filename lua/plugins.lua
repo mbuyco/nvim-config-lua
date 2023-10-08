@@ -44,7 +44,6 @@ return packer.startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
-  use 'windwp/nvim-autopairs'
 
   -- Plugins with options
   use {
@@ -73,14 +72,19 @@ return packer.startup(function(use)
       requires = 'nvim-tree/nvim-web-devicons'
   }
   use {
-    'nvim-telescope/telescope-fzf-native.nvim',
-    run = 'make',
-  }
-  use {
     'numToStr/Comment.nvim',
     config = function()
       require('Comment').setup()
     end
+  }
+  use {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    run = 'make'
+  }
+  use {
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
+    'neovim/nvim-lspconfig',
   }
 
   -- Colorscheme
@@ -97,23 +101,18 @@ return packer.startup(function(use)
   use 'vigoux/oak'
 
   -- General
-  use 'L3MON4D3/LuaSnip'
   use 'Xuyuanp/nerdtree-git-plugin'
   use 'christoomey/vim-tmux-navigator'
-  use 'hashivim/vim-terraform'
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/nvim-cmp'
+  use 'dense-analysis/ale'
   use 'jwalton512/vim-blade'
   use 'mattn/emmet-vim'
   use 'mhinz/vim-startify'
   use 'neovim/nvim-lspconfig'
   use 'nvim-lualine/lualine.nvim'
-  use 'nvim-telescope/telescope-fzy-native.nvim'
-  use 'phpactor/phpactor'
   use 'posva/vim-vue'
   use 'preservim/nerdtree'
-  use 'saadparwaiz1/cmp_luasnip'
   use 'tpope/vim-fugitive'
+  use 'windwp/nvim-autopairs'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
