@@ -86,6 +86,12 @@ return packer.startup(function(use)
     'williamboman/mason-lspconfig.nvim',
     'neovim/nvim-lspconfig',
   }
+  use {
+    'windwp/nvim-autopairs',
+    config = function()
+      require("nvim-autopairs").setup {}
+    end
+  }
 
   -- Colorscheme
   use 'folke/tokyonight.nvim'
@@ -107,7 +113,6 @@ return packer.startup(function(use)
   use 'jwalton512/vim-blade'
   use 'mattn/emmet-vim'
   use 'mhinz/vim-startify'
-  use 'neovim/nvim-lspconfig'
   use 'nvim-lualine/lualine.nvim'
   use 'posva/vim-vue'
   use 'preservim/nerdtree'
