@@ -81,10 +81,12 @@ return packer.startup(function(use)
     'nvim-telescope/telescope-fzf-native.nvim',
     run = 'make'
   }
+  -- Plugins dependent on LSP
   use {
     'L3MON4D3/LuaSnip', -- Snippets plugin 'neovim/nvim-lspconfig',
     'hrsh7th/cmp-nvim-lsp', -- LSP source for nvim-cmp
     'hrsh7th/nvim-cmp', -- Autocompletion plugin
+    'mfussenegger/nvim-lint', -- Linter plugin
     'neovim/nvim-lspconfig', -- Collection of configurations for built-in LSP client
     'saadparwaiz1/cmp_luasnip', -- Snippets source for nvim-cmp
     'williamboman/mason-lspconfig.nvim', -- Mason to lspconfig bridge

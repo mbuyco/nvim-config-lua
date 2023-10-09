@@ -2,6 +2,7 @@ local lsp_servers = {
   'eslint',
   'html',
   'intelephense',
+  'lua_ls',
   'phpactor',
   'pyright',
   'tsserver',
@@ -104,4 +105,10 @@ cmp.setup {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
   },
+}
+
+-- Linters
+require('lint').linters_by_ft = {
+  markdown = {'vale',},
+  php = {'phpcs',}
 }
