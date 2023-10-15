@@ -41,10 +41,5 @@ vim.opt.wildignore:append('*.o', '*~', '*.pyc', '*/.git/*', '*/.hg/*', '*/.svn/*
 vim.opt.wildmenu = true
 vim.opt.wrap = true
 
--- 1 tab = 2 spaces
-vim.o.shiftwidth = 4
-vim.o.softtabstop = 4
-vim.o.tabstop = 4
-
 -- Remove trailing spaces on save
 vim.cmd [[autocmd BufWritePre * :%s/\s\+$//e]]

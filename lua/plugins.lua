@@ -92,12 +92,6 @@ return packer.startup(function(use)
     'williamboman/mason-lspconfig.nvim', -- Mason to lspconfig bridge
     'williamboman/mason.nvim', -- Mason configurator
   }
-  use {
-    'windwp/nvim-autopairs',
-    config = function()
-      require("nvim-autopairs").setup {}
-    end
-  }
 
   -- Colorscheme
   use 'folke/tokyonight.nvim'
@@ -109,7 +103,6 @@ return packer.startup(function(use)
   use 'sainnhe/everforest'
   use 'tanvirtin/monokai.nvim'
   use 'tomasiser/vim-code-dark'
-  use 'tribela/vim-transparent'
   use 'vigoux/oak'
 
   -- General
