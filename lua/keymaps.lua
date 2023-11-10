@@ -54,3 +54,6 @@ vim.api.nvim_set_keymap('n', '<leader>pp', ':setlocal paste!<CR>', { noremap = t
 -- toggle comment
 vim.api.nvim_set_keymap('n', '<C-_>', 'gcc', { silent = true })
 vim.api.nvim_set_keymap('v', '<C-_>', 'gc', { silent = true })
+
+-- primeagean remap
+vim.api.nvim_set_keymap('x', '<leader>p', '"_dP', { noremap = true, silent = true })

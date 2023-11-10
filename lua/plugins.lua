@@ -125,5 +125,5 @@ return packer.startup(function(use)
   end
 
   -- Default colorscheme
-  vim.cmd [[colorscheme monokai]]
+  vim.cmd [[colorscheme everforest]]
 end)
