@@ -109,6 +109,7 @@ return packer.startup(function(use)
   use 'Xuyuanp/nerdtree-git-plugin'
   use 'christoomey/vim-tmux-navigator'
   use 'dense-analysis/ale'
+  use 'github/copilot.vim'
   use 'jwalton512/vim-blade'
   use 'mattn/emmet-vim'
   use 'mhinz/vim-startify'
