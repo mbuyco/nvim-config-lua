@@ -94,10 +94,12 @@ return packer.startup(function(use)
   }
 
   -- Colorscheme
+  use 'rktjmp/lush.nvim'
   use 'folke/tokyonight.nvim'
   use 'gruvbox-community/gruvbox'
   use 'jacoborus/tender.vim'
   use 'joshdick/onedark.vim'
+  use 'kaplanz/deku.nvim'
   use 'marko-cerovac/material.nvim'
   use 'mhartington/oceanic-next'
   use 'overcache/NeoSolarized'
@@ -128,5 +130,5 @@ return packer.startup(function(use)
   end
 
   -- Default colorscheme
-  vim.cmd [[colorscheme everforest]]
+  vim.cmd [[colorscheme kanagawa]]
 end)

@@ -3,13 +3,17 @@ if not status_ok then
 	return
 end
 
-local actions = require('telescope.actions')
 local builtin = require('telescope.builtin')
 
 -- You dont need to set any of these options. These are the default ones. Only
 -- the loading is important
 telescope.setup {
   defaults = {
+    file_ignore_patterns = {
+      "%node_modules",
+      "%vendor",
+      ".git"
+    },
     vimgrep_arguments = {
       'rg',
       '--vimgrep',
