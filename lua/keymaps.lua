@@ -36,6 +36,9 @@ vim.api.nvim_set_keymap('n', '<leader>h', ':bprevious<cr>', { noremap = true })
 -- super useful when editing files in the same directory
 vim.api.nvim_set_keymap('n', '<leader>te', ':tabedit ' .. vim.fn.expand("%:p:h") .. '/<CR>', { noremap = true })
 
+-- duplicate current buffer to a tab
+vim.api.nvim_set_keymap('n', '<leader>td', ':tabedit %<CR>', { noremap = true })
+
 -- remap vim 0 to first non-blank character
 vim.api.nvim_set_keymap('n', '0', '^', { noremap = true })
 
