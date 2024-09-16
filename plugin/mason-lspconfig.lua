@@ -5,7 +5,7 @@ local lsp_servers = {
   'lua_ls',
   'phpactor',
   'pyright',
-  'tsserver',
+  'ts_ls',
 }
 
 require('mason').setup()

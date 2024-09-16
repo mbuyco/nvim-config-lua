@@ -130,5 +130,5 @@ return packer.startup(function(use)
   end
 
   -- Default colorscheme
-  vim.cmd [[colorscheme kanagawa]]
+  vim.cmd [[colorscheme tokyonight]]
 end)
