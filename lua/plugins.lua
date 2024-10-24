@@ -118,7 +118,6 @@ return packer.startup(function(use)
   use 'mattn/emmet-vim'
   use 'mhinz/vim-startify'
   use 'nvim-lualine/lualine.nvim'
-  use 'posva/vim-vue'
   use 'preservim/nerdtree'
   use 'tpope/vim-fugitive'
   use 'windwp/nvim-autopairs'
