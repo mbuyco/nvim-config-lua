@@ -1,6 +1,7 @@
 local lsp_servers = {
   'eslint',
   'html',
+  'intelephense',
   'lua_ls',
   'phpactor',
   'pyright',
