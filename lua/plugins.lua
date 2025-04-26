@@ -1,18 +1,18 @@
-local fn = vim.fn
+local ensure_packer = function()
+  local fn = vim.fn
+  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  if fn.empty(fn.glob(install_path)) > 0 then
+    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    vim.cmd [[packadd packer.nvim]]
+    return true
+  end
+  return false
+end
 
--- Automatically install packer
-local install_path = fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-  PACKER_BOOTSTRAP = fn.system {
-    'git',
-    'clone',
-    '--depth',
-    '1',
-    'https://github.com/wbthomason/packer.nvim',
-    install_path,
-  }
-  print 'Installing packer close and reopen Neovim...'
-  vim.cmd [[packadd packer.nvim]]
+local packer_bootstrap = ensure_packer()
+local status_ok, packer = pcall(require, 'packer')
+if not status_ok then
+  return
 end
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
@@ -22,12 +22,6 @@ vim.cmd [[
     autocmd BufWritePost plugins.lua source <afile> | PackerSync
   augroup end
 ]]
-
--- Use a protected call so we don't error out on first use
-local status_ok, packer = pcall(require, 'packer')
-if not status_ok then
-  return
-end
 
 -- Have packer use a popup window
 packer.init {
@@ -40,58 +34,31 @@ packer.init {
 
 -- Install your plugins here
 return packer.startup(function(use)
-  -- Packer
   use 'wbthomason/packer.nvim'
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
-
-  -- Plugins with options
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    run = function()
-      local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
-      ts_update()
-    end
-  }
-  use {
-    'nvim-telescope/telescope.nvim', branch = '0.1.x',
-    requires = {
-      {'nvim-lua/plenary.nvim'},
-      {'nvim-telescope/telescope-live-grep-args.nvim'},
-    }
-  }
-  use {
-    'lewis6991/gitsigns.nvim',
-    config = function()
-      require('gitsigns').setup()
-    end
-  }
-  use {
-      'akinsho/bufferline.nvim',
-      tag = 'v3.*',
-      requires = 'nvim-tree/nvim-web-devicons'
-  }
-  use {
-    'numToStr/Comment.nvim',
-    config = function()
-      require('Comment').setup()
-    end
-  }
-  use {
-    'nvim-telescope/telescope-fzf-native.nvim',
-    run = 'make'
-  }
-  -- Plugins dependent on LSP
-  use {
-    'L3MON4D3/LuaSnip', -- Snippets plugin 'neovim/nvim-lspconfig',
-    'hrsh7th/cmp-nvim-lsp', -- LSP source for nvim-cmp
-    'hrsh7th/nvim-cmp', -- Autocompletion plugin
-    'mfussenegger/nvim-lint', -- Linter plugin
-    'neovim/nvim-lspconfig', -- Collection of configurations for built-in LSP client
-    'saadparwaiz1/cmp_luasnip', -- Snippets source for nvim-cmp
-    'williamboman/mason-lspconfig.nvim', -- Mason to lspconfig bridge
-    'williamboman/mason.nvim', -- Mason configurator
-  }
+  use 'nvim-treesitter/nvim-treesitter'
+  use 'lewis6991/gitsigns.nvim'
+  use 'numToStr/Comment.nvim'
+  use 'L3MON4D3/LuaSnip' -- Snippets plugin 'neovim/nvim-lspconfig'
+  use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
+  use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
+  use 'mfussenegger/nvim-lint' -- Linter plugin
+  use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
+  use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
+  use 'williamboman/mason-lspconfig.nvim' -- Mason to lspconfig bridge
+  use 'williamboman/mason.nvim' -- Mason configurator
+  use 'Xuyuanp/nerdtree-git-plugin'
+  use 'christoomey/vim-tmux-navigator'
+  use 'dense-analysis/ale'
+  use 'github/copilot.vim'
+  use 'jwalton512/vim-blade'
+  use 'mattn/emmet-vim'
+  use 'mhinz/vim-startify'
+  use 'nvim-lualine/lualine.nvim'
+  use 'preservim/nerdtree'
+  use 'tpope/vim-fugitive'
+  use 'windwp/nvim-autopairs'
 
   -- Colorscheme
   use 'rktjmp/lush.nvim'
@@ -109,25 +76,35 @@ return packer.startup(function(use)
   use 'tomasiser/vim-code-dark'
   use 'vigoux/oak'
 
-  -- General
-  use 'Xuyuanp/nerdtree-git-plugin'
-  use 'christoomey/vim-tmux-navigator'
-  use 'dense-analysis/ale'
-  use 'github/copilot.vim'
-  use 'jwalton512/vim-blade'
-  use 'mattn/emmet-vim'
-  use 'mhinz/vim-startify'
-  use 'nvim-lualine/lualine.nvim'
-  use 'preservim/nerdtree'
-  use 'tpope/vim-fugitive'
-  use 'windwp/nvim-autopairs'
+  -- Plugins with options
+  use {
+    'nvim-telescope/telescope.nvim',
+    branch = '0.1.x',
+    requires = {
+      {'nvim-lua/plenary.nvim'},
+      {'nvim-telescope/telescope-live-grep-args.nvim'},
+    }
+  }
+  use {
+      'akinsho/bufferline.nvim',
+      requires = 'nvim-tree/nvim-web-devicons',
+  }
+  use {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    run = 'make',
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
-  if PACKER_BOOTSTRAP then
-    require('packer').sync()
+  if packer_bootstrap then
+    packer.sync()
+    vim.api.nvim_create_autocmd('User', {
+      pattern = 'PackerComplete',
+      callback = function()
+        vim.cmd('colorscheme gruvbox')
+      end,
+    })
+  else
+    vim.cmd('colorscheme gruvbox')
   end
-
-  -- Default colorscheme
-  vim.cmd [[colorscheme tokyonight]]
 end)
