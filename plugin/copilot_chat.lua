@@ -3,6 +3,6 @@ vim.api.nvim_create_autocmd('BufEnter', {
   callback = function()
     vim.keymap.set('n', '<C-l>', '<C-w>l', { buffer = true, silent = true, noremap = true })
     vim.keymap.set('i', '<C-l>', '<C-w>l', { buffer = true, silent = true, noremap = true })
-    vim.cmd('vertical resize 69'))
+    vim.cmd('vertical resize 69')
   end
 })
