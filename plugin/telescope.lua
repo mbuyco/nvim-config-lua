@@ -1,5 +1,5 @@
-local status_ok, telescope = pcall(require, 'telescope')
-if not status_ok then
+local telescope = require('utils').get_package('telescope')
+if not telescope then
 	return
 end
 
@@ -7,7 +7,7 @@ local builtin = require('telescope.builtin')
 
 -- You dont need to set any of these options. These are the default ones. Only
 -- the loading is important
-telescope.setup {
+telescope.setup({
   defaults = {
     file_ignore_patterns = {
       "%node_modules",
@@ -38,7 +38,7 @@ telescope.setup {
       }
     }
   }
-}
+})
 
 -- Load extensions
 telescope.load_extension('fzf')

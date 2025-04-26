@@ -1,9 +1,4 @@
-local status_ok, lualine = pcall(require, 'lualine')
-if not status_ok then
-	return
-end
-
-lualine.setup {
+require('utils').setup_config('lualine', {
   options = {
     icons_enabled = true,
     theme = 'gruvbox',
@@ -29,4 +24,4 @@ lualine.setup {
   },
   tabline = {},
   extensions = {}
-}
+})

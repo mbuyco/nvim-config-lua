@@ -1,3 +1,4 @@
+local utils = require('utils')
 local ensure_packer = function()
   local fn = vim.fn
   local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
@@ -10,8 +11,9 @@ local ensure_packer = function()
 end
 
 local packer_bootstrap = ensure_packer()
-local status_ok, packer = pcall(require, 'packer')
-if not status_ok then
+local packer = utils.get_package('packer')
+
+if not packer_bootstrap and not packer then
   return
 end
 
@@ -22,6 +24,10 @@ vim.cmd [[
     autocmd BufWritePost plugins.lua source <afile> | PackerSync
   augroup end
 ]]
+
+if not packer then
+  return
+end
 
 -- Have packer use a popup window
 packer.init {
@@ -97,13 +103,10 @@ return packer.startup(function(use)
     'CopilotC-Nvim/CopilotChat.nvim',
     after = 'copilot.vim',
     config = function()
-      local ok, copilot_chat = pcall(require, 'CopilotChat')
-			if ok then
-        copilot_chat.setup({
-          model = 'DeepSeek-R1'
-        })
-			end
-    end
+      require('utils').setup_config('CopilotChat', {
+        model = 'DeepSeek-R1',
+      })
+    end,
   }
 
   -- Automatically set up your configuration after cloning packer.nvim
