@@ -60,3 +60,6 @@ vim.api.nvim_set_keymap('v', '<C-_>', 'gc', { silent = true })
 
 -- primeagean remap
 vim.api.nvim_set_keymap('x', '<leader>p', '"_dP', { noremap = true, silent = true })
+
+-- copilot chat
+vim.api.nvim_set_keymap('n', '<leader>cc', ':CopilotChatToggle<CR>', { noremap = true, silent = true })

@@ -34,30 +34,30 @@ packer.init {
 
 -- Install your plugins here
 return packer.startup(function(use)
-  use 'wbthomason/packer.nvim'
-  use 'nvim-lua/popup.nvim'
-  use 'nvim-lua/plenary.nvim'
-  use 'nvim-treesitter/nvim-treesitter'
-  use 'lewis6991/gitsigns.nvim'
-  use 'numToStr/Comment.nvim'
   use 'L3MON4D3/LuaSnip' -- Snippets plugin 'neovim/nvim-lspconfig'
-  use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
-  use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
-  use 'mfussenegger/nvim-lint' -- Linter plugin
-  use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
-  use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
-  use 'williamboman/mason-lspconfig.nvim' -- Mason to lspconfig bridge
-  use 'williamboman/mason.nvim' -- Mason configurator
   use 'Xuyuanp/nerdtree-git-plugin'
   use 'christoomey/vim-tmux-navigator'
   use 'dense-analysis/ale'
   use 'github/copilot.vim'
+  use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
+  use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
   use 'jwalton512/vim-blade'
+  use 'lewis6991/gitsigns.nvim'
   use 'mattn/emmet-vim'
+  use 'mfussenegger/nvim-lint' -- Linter plugin
   use 'mhinz/vim-startify'
+  use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
+  use 'numToStr/Comment.nvim'
+  use 'nvim-lua/plenary.nvim'
+  use 'nvim-lua/popup.nvim'
   use 'nvim-lualine/lualine.nvim'
+  use 'nvim-treesitter/nvim-treesitter'
   use 'preservim/nerdtree'
+  use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
   use 'tpope/vim-fugitive'
+  use 'wbthomason/packer.nvim'
+  use 'williamboman/mason-lspconfig.nvim' -- Mason to lspconfig bridge
+  use 'williamboman/mason.nvim' -- Mason configurator
   use 'windwp/nvim-autopairs'
 
   -- Colorscheme
@@ -93,6 +93,18 @@ return packer.startup(function(use)
     'nvim-telescope/telescope-fzf-native.nvim',
     run = 'make',
   }
+  use {
+    'CopilotC-Nvim/CopilotChat.nvim',
+    after = 'copilot.vim',
+    config = function()
+      local ok, copilot_chat = pcall(require, 'CopilotChat')
+			if ok then
+        copilot_chat.setup({
+          model = 'DeepSeek-R1'
+        })
+			end
+    end
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
@@ -101,10 +113,10 @@ return packer.startup(function(use)
     vim.api.nvim_create_autocmd('User', {
       pattern = 'PackerComplete',
       callback = function()
-        vim.cmd('colorscheme gruvbox')
+        vim.cmd('colorscheme everforest')
       end,
     })
   else
-    vim.cmd('colorscheme gruvbox')
+    vim.cmd('colorscheme everforest')
   end
 end)
