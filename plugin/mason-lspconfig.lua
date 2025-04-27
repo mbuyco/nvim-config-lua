@@ -53,7 +53,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 -- Add additional capabilities supported by nvim-cmp
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+local cmp_nvim_lsp = utils.get_package('cmp_nvim_lsp')
+if not cmp_nvim_lsp then
+  return
+end
+
+local capabilities = cmp_nvim_lsp.default_capabilities()
 -- local capabilities = vim.tbl_deep_extend(
 --   "force",
 --   vim.lsp.protocol.make_client_capabilities(),
