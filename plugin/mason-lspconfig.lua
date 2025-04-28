@@ -2,7 +2,6 @@ local utils = require('utils')
 
 local lsp_servers = {
   'emmet_language_server',
-  'eslint',
   'gopls',
   'html',
   'intelephense',
