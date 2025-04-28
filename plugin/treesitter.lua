@@ -19,4 +19,7 @@ require('utils').setup_config('nvim-treesitter.configs', {
   highlight = {
     enable = true,              -- false will disable the whole extension
   },
+  indent = {
+    enable = true,
+  },
 })

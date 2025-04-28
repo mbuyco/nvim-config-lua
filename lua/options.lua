@@ -30,6 +30,7 @@ vim.opt.ruler = true
 vim.opt.shortmess:append('c')
 vim.opt.si = true
 vim.opt.smartcase = true
+vim.opt.smartindent = false
 vim.opt.smarttab = true
 vim.opt.so = 999
 vim.opt.swapfile = false
