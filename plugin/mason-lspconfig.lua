@@ -2,6 +2,7 @@ local utils = require('utils')
 
 local lsp_servers = {
   'eslint',
+  'gopls',
   'html',
   'intelephense',
   'lua_ls',
