@@ -10,6 +10,7 @@ local lsp_servers = {
   'phpactor',
   'pyright',
   'ts_ls',
+  'volar',
 }
 
 utils.setup_config('mason')
@@ -164,5 +165,21 @@ lspconfig.emmet_language_server.setup({
     syntaxProfiles = {},
     --- @type table<string, string> [Emmet Docs](https://docs.emmet.io/customization/snippets/#variables)
     variables = {},
+  },
+})
+
+-- volar config
+lspconfig.volar.setup({
+  filetypes = {
+    'typescript',
+    'javascript',
+    'javascriptreact',
+    'typescriptreact',
+    'vue',
+  },
+  init_options = {
+    vue = {
+      hybridMode = false,
+    },
   },
 })
