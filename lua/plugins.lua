@@ -102,10 +102,12 @@ return packer.startup(function(use)
     after = 'copilot.vim',
     config = function()
       require('utils').setup_config('CopilotChat', {
-        model = 'DeepSeek-R1',
+        model = 'gpt-4o',
       })
     end,
   }
+
+  local colorscheme = 'tokyonight-moon'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
@@ -114,10 +116,10 @@ return packer.startup(function(use)
     vim.api.nvim_create_autocmd('User', {
       pattern = 'PackerComplete',
       callback = function()
-        vim.cmd('colorscheme everforest')
+        vim.cmd('colorscheme ' .. colorscheme)
       end,
     })
   else
-    vim.cmd('colorscheme everforest')
+    vim.cmd('colorscheme ' .. colorscheme)
   end
 end)
