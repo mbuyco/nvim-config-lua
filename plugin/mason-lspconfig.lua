@@ -140,6 +140,7 @@ lspconfig.emmet_language_server.setup({
     "less",
     "sass",
     "scss",
+    "php",
     "pug",
     "typescriptreact",
   },
