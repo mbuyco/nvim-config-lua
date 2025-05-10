@@ -2,9 +2,7 @@ local utils = require('utils')
 
 local lsp_servers = {
   'emmet_language_server',
-  'gopls',
   'html',
-  'intelephense',
   'lua_ls',
   'phpactor',
   'pyright',
