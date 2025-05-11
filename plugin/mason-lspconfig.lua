@@ -113,12 +113,6 @@ cmp.setup({
   },
 })
 
--- Linters
-require('lint').linters_by_ft = {
-  markdown = {'vale',},
-  php = {'phpcs',}
-}
-
 -- emmet_language_server config
 lspconfig.emmet_language_server.setup({
   filetypes = {

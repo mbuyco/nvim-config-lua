@@ -48,7 +48,6 @@ return packer.startup(function(use)
   use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
   use 'jwalton512/vim-blade'
   use 'lewis6991/gitsigns.nvim'
-  use 'mfussenegger/nvim-lint' -- Linter plugin
   use 'mhinz/vim-startify'
   use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
   use 'numToStr/Comment.nvim'
