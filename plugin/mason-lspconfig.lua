@@ -52,26 +52,18 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
--- Add additional capabilities supported by nvim-cmp
-
 local cmp_nvim_lsp = utils.get_package('cmp_nvim_lsp')
 if not cmp_nvim_lsp then
   return
 end
 
+-- Add additional capabilities supported by nvim-cmp
 local capabilities = cmp_nvim_lsp.default_capabilities()
--- local capabilities = vim.tbl_deep_extend(
---   "force",
---   vim.lsp.protocol.make_client_capabilities(),
---   require('cmp_nvim_lsp').default_capabilities()
--- )
--- capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
 local lspconfig = require('lspconfig')
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
 for _, lsp in ipairs(lsp_servers) do
   lspconfig[lsp].setup {
-    -- on_attach = my_custom_on_attach,
     capabilities = capabilities,
   }
 end
@@ -179,5 +171,21 @@ lspconfig.volar.setup({
     vue = {
       hybridMode = false,
     },
+  },
+})
+
+
+lspconfig.phpactor.setup({
+  init_options = {
+    ['language_server_phpstan.enabled'] = true,
+    ['php_code_sniffer.enabled'] = true,
+    ['language_server_configuration.auto_config'] = false,
+  },
+})
+
+-- neovim 0.11 configuration
+vim.diagnostic.config({
+  virtual_text = {
+    current_line = true,
   },
 })
