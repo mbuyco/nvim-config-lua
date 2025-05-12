@@ -114,8 +114,10 @@ local lspconfigMap = {
   phpactor = {
     cmd = { 'phpactor', 'language-server', '-vvv' },
     init_options = {
+      ['language_server_configuration.auto_config'] = false,
       ['language_server_phpstan.enabled'] = true,
-      -- ['php_code_sniffer.enabled'] = true,
+      ['language_server_phpstan.level'] = 'max',
+      ['php_code_sniffer.enabled'] = true,
     },
   },
 }
