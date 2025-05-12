@@ -3,17 +3,13 @@ local utils = require('utils')
 local lsp_servers = {
   'emmet_language_server',
   'html',
+  'laravel_ls',
   'lua_ls',
   'phpactor',
   'pyright',
   'ts_ls',
   'volar',
 }
-
-utils.setup_config('mason')
-utils.setup_config('mason-lspconfig', {
-  ensure_installed = lsp_servers,
-})
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -59,13 +55,85 @@ end
 
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = cmp_nvim_lsp.default_capabilities()
-local lspconfig = require('lspconfig')
+local lspconfigMap = {
+  emmet_language_server = {
+    filetypes = {
+      "css",
+      "eruby",
+      "html",
+      "javascript",
+      "javascriptreact",
+      "less",
+      "sass",
+      "scss",
+      "php",
+      "pug",
+      "typescriptreact",
+    },
+    -- Read more about this options in the [vscode docs](https://code.visualstudio.com/docs/editor/emmet#_emmet-configuration).
+    -- **Note:** only the options listed in the table are supported.
+    init_options = {
+      ---@type table<string, string>
+      includeLanguages = {},
+      --- @type string[]
+      excludeLanguages = {},
+      --- @type string[]
+      extensionsPath = {},
+      --- @type table<string, any> [Emmet Docs](https://docs.emmet.io/customization/preferences/)
+      preferences = {},
+      --- @type boolean Defaults to `true`
+      showAbbreviationSuggestions = true,
+      --- @type "always" | "never" Defaults to `"always"`
+      showExpandedAbbreviation = "always",
+      --- @type boolean Defaults to `false`
+      showSuggestionsAsSnippets = false,
+      --- @type table<string, any> [Emmet Docs](https://docs.emmet.io/customization/syntax-profiles/)
+      syntaxProfiles = {},
+      --- @type table<string, string> [Emmet Docs](https://docs.emmet.io/customization/snippets/#variables)
+      variables = {},
+    },
+  },
+
+  -- volar config
+  volar = {
+    filetypes = {
+      'typescript',
+      'javascript',
+      'javascriptreact',
+      'typescriptreact',
+      'vue',
+    },
+    init_options = {
+      vue = {
+        hybridMode = false,
+      },
+    },
+  },
+
+  -- phpactor config
+  phpactor = {
+    cmd = { 'phpactor', 'language-server', '-vvv' },
+    init_options = {
+      ['language_server_phpstan.enabled'] = true,
+      -- ['php_code_sniffer.enabled'] = true,
+    },
+  },
+}
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
 for _, lsp in ipairs(lsp_servers) do
-  lspconfig[lsp].setup {
+  local config = {
     capabilities = capabilities,
   }
+
+  if lspconfigMap[lsp] then
+    for k, v in pairs(lspconfigMap[lsp]) do
+      config[k] = v
+    end
+  end
+
+  vim.lsp.enable(lsp)
+  vim.lsp.config(lsp, config)
 end
 
 -- luasnip setup
@@ -113,73 +181,9 @@ cmp.setup({
   },
 })
 
--- emmet_language_server config
-lspconfig.emmet_language_server.setup({
-  filetypes = {
-    "css",
-    "eruby",
-    "html",
-    "javascript",
-    "javascriptreact",
-    "less",
-    "sass",
-    "scss",
-    "php",
-    "pug",
-    "typescriptreact",
-  },
-  -- Read more about this options in the [vscode docs](https://code.visualstudio.com/docs/editor/emmet#_emmet-configuration).
-  -- **Note:** only the options listed in the table are supported.
-  init_options = {
-    ---@type table<string, string>
-    includeLanguages = {},
-    --- @type string[]
-    excludeLanguages = {},
-    --- @type string[]
-    extensionsPath = {},
-    --- @type table<string, any> [Emmet Docs](https://docs.emmet.io/customization/preferences/)
-    preferences = {},
-    --- @type boolean Defaults to `true`
-    showAbbreviationSuggestions = true,
-    --- @type "always" | "never" Defaults to `"always"`
-    showExpandedAbbreviation = "always",
-    --- @type boolean Defaults to `false`
-    showSuggestionsAsSnippets = false,
-    --- @type table<string, any> [Emmet Docs](https://docs.emmet.io/customization/syntax-profiles/)
-    syntaxProfiles = {},
-    --- @type table<string, string> [Emmet Docs](https://docs.emmet.io/customization/snippets/#variables)
-    variables = {},
-  },
-})
-
--- volar config
-lspconfig.volar.setup({
-  filetypes = {
-    'typescript',
-    'javascript',
-    'javascriptreact',
-    'typescriptreact',
-    'vue',
-  },
-  init_options = {
-    vue = {
-      hybridMode = false,
-    },
-  },
-})
-
-
-lspconfig.phpactor.setup({
-  init_options = {
-    ['language_server_phpstan.enabled'] = true,
-    ['php_code_sniffer.enabled'] = true,
-    ['language_server_configuration.auto_config'] = false,
-  },
-})
-
 -- neovim 0.11 configuration
 vim.diagnostic.config({
-  virtual_text = {
-    current_line = true,
-  },
+  virtual_text = true,
+  severity_sort = true,
+  virtual_lines = { current_line = true },
 })

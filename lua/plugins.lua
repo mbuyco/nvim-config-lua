@@ -59,8 +59,6 @@ return packer.startup(function(use)
   use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
   use 'tpope/vim-fugitive'
   use 'wbthomason/packer.nvim'
-  use 'williamboman/mason-lspconfig.nvim' -- Mason to lspconfig bridge
-  use 'williamboman/mason.nvim' -- Mason configurator
   use 'windwp/nvim-autopairs'
 
   -- Colorscheme
