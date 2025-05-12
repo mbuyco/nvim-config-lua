@@ -45,3 +45,10 @@ vim.opt.wrap = true
 
 -- Remove trailing spaces on save
 vim.cmd [[autocmd BufWritePre * :%s/\s\+$//e]]
+
+-- neovim 0.11 configuration for diagnostics
+vim.diagnostic.config({
+  virtual_text = true,
+  severity_sort = true,
+  virtual_lines = { current_line = true },
+})

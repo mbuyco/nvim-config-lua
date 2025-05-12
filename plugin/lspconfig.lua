@@ -114,6 +114,10 @@ local lspconfigMap = {
   phpactor = {
     cmd = { 'phpactor', 'language-server', '-vvv' },
     init_options = {
+      ['language_server.diagnostic_exclude_paths'] = {
+        './vendor/**/*',
+      },
+      ['language_server.diagnostics_on_update'] = false,
       ['language_server_configuration.auto_config'] = false,
       ['language_server_phpstan.enabled'] = true,
       ['language_server_phpstan.level'] = 'max',
@@ -181,11 +185,4 @@ cmp.setup({
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
   },
-})
-
--- neovim 0.11 configuration
-vim.diagnostic.config({
-  virtual_text = true,
-  severity_sort = true,
-  virtual_lines = { current_line = true },
 })
