@@ -102,12 +102,12 @@ return packer.startup(function(use)
     after = 'copilot.vim',
     config = function()
       require('utils').setup_config('CopilotChat', {
-        model = 'gpt-4o',
+        model = 'gpt-4.1',
       })
     end,
   }
 
-  local colorscheme = 'gruvbox'
+  local colorscheme = 'material-darker'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
