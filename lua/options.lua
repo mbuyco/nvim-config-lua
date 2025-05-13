@@ -50,5 +50,4 @@ vim.cmd [[autocmd BufWritePre * :%s/\s\+$//e]]
 vim.diagnostic.config({
   virtual_text = true,
   severity_sort = true,
-  virtual_lines = { current_line = true },
 })

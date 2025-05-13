@@ -3,6 +3,7 @@ local utils = require('utils')
 local lsp_servers = {
   'emmet_language_server',
   'html',
+  'intelephense',
   'laravel_ls',
   'lua_ls',
   'phpactor',
@@ -114,9 +115,6 @@ local lspconfigMap = {
   phpactor = {
     cmd = { 'phpactor', 'language-server', '-vvv' },
     init_options = {
-      ['language_server.diagnostic_exclude_paths'] = {
-        './vendor/**/*',
-      },
       ['language_server.diagnostics_on_update'] = false,
       ['language_server_configuration.auto_config'] = false,
       ['language_server_phpstan.enabled'] = true,
