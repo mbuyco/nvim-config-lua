@@ -107,7 +107,7 @@ return packer.startup(function(use)
     end,
   }
 
-  local colorscheme = 'material-darker'
+  local colorscheme = require('color')
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
