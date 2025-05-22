@@ -72,3 +72,7 @@ vim.keymap.set('n', '<leader>dl', function ()
 		vim.diagnostic.config({ virtual_lines = { current_line = true } })
 	end
 end, { noremap = true, silent = true })
+
+-- disable cmdheight++ on accidental keystroke
+vim.api.nvim_set_keymap('n', '<C-w>-', '<nop>', { noremap = true, silent = true })
+
