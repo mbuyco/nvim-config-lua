@@ -76,3 +76,9 @@ end, { noremap = true, silent = true })
 -- disable cmdheight++ on accidental keystroke
 vim.api.nvim_set_keymap('n', '<C-w>-', '<nop>', { noremap = true, silent = true })
 
+-- map ctrl 1-9 to buffer tabs
+for i = 1, 9 do
+  vim.keymap.set('n', '<leader>' .. i, function()
+    require('bufferline').go_to_buffer(i, true)
+  end, { noremap = true, silent = true })
+end
