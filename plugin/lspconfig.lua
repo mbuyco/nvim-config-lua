@@ -9,7 +9,7 @@ local lsp_servers = {
   'phpactor',
   'pyright',
   'ts_ls',
-  'volar',
+  'vue_ls',
 }
 
 -- Global mappings.
@@ -62,22 +62,6 @@ local lspconfigMap = {
       syntaxProfiles = {},
       --- @type table<string, string> [Emmet Docs](https://docs.emmet.io/customization/snippets/#variables)
       variables = {},
-    },
-  },
-
-  -- volar config
-  volar = {
-    filetypes = {
-      'typescript',
-      'javascript',
-      'javascriptreact',
-      'typescriptreact',
-      'vue',
-    },
-    init_options = {
-      vue = {
-        hybridMode = false,
-      },
     },
   },
 
@@ -167,8 +151,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     local opts = { buffer = ev.buf }
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-    -- vim.keymap.set('n', 'gd', '<C-w>]<CR>', opts) -- uncomment to enable goto definition in horizontal split
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'gd', '<C-]>', opts) -- uncomment to enable goto definition in horizontal split
+    -- vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
     vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)

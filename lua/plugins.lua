@@ -90,7 +90,11 @@ return packer.startup(function(use)
     'akinsho/bufferline.nvim',
     requires = 'nvim-tree/nvim-web-devicons',
     config = function()
-      require('bufferline').setup()
+      require('bufferline').setup({
+        options = {
+          numbers = 'ordinal',
+        }
+      })
     end
   }
   use {

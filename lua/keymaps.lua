@@ -73,6 +73,14 @@ vim.keymap.set('n', '<leader>dl', function ()
 	end
 end, { noremap = true, silent = true })
 
+vim.keymap.set('n', '<leader>dt', function ()
+  if vim.diagnostic.config().virtual_text then
+    vim.diagnostic.config({ virtual_text = false })
+  else
+    vim.diagnostic.config({ virtual_text = { spacing = 4, prefix = '' } })
+  end
+end, { noremap = true, silent = true })
+
 -- disable cmdheight++ on accidental keystroke
 vim.api.nvim_set_keymap('n', '<C-w>-', '<nop>', { noremap = true, silent = true })
 
