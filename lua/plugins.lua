@@ -105,9 +105,7 @@ return packer.startup(function(use)
     'CopilotC-Nvim/CopilotChat.nvim',
     after = 'copilot.vim',
     config = function()
-      require('utils').setup_config('CopilotChat', {
-        model = 'gpt-4.1',
-      })
+      require('utils').setup_config('CopilotChat', {})
     end,
   }
 

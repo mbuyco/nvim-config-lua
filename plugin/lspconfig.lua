@@ -24,8 +24,6 @@ if not cmp_nvim_lsp then
   return
 end
 
--- Add additional capabilities supported by nvim-cmp
-local capabilities = cmp_nvim_lsp.default_capabilities()
 local lspconfigMap = {
   emmet_language_server = {
     filetypes = {
@@ -72,17 +70,15 @@ local lspconfigMap = {
       ['language_server.diagnostics_on_update'] = false,
       ['language_server_configuration.auto_config'] = false,
       ['language_server_phpstan.enabled'] = true,
-      ['language_server_phpstan.level'] = 'max',
+      ['language_server_phpstan.level'] = '7',
       ['php_code_sniffer.enabled'] = true,
     },
   },
 }
 
--- Enable some language servers with the additional completion capabilities offered by nvim-cmp
+-- Enable/configure language servers
 for _, lsp in ipairs(lsp_servers) do
-  local config = {
-    capabilities = capabilities,
-  }
+  local config = {}
 
   if lspconfigMap[lsp] then
     for k, v in pairs(lspconfigMap[lsp]) do
