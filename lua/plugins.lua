@@ -74,6 +74,7 @@ return packer.startup(function(use)
   use 'rebelot/kanagawa.nvim'
   use 'sainnhe/everforest'
   use 'tanvirtin/monokai.nvim'
+  use 'thesimonho/kanagawa-paper.nvim'
   use 'tomasiser/vim-code-dark'
   use 'vigoux/oak'
 

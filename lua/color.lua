@@ -1,1 +1,1 @@
-return 'OceanicNext'
+return 'kanagawa-paper'
