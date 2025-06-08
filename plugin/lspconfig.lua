@@ -8,6 +8,7 @@ local lsp_servers = {
   'lua_ls',
   'phpactor',
   'pyright',
+  'robotframework_ls',
   'ts_ls',
   'vue_ls',
 }
