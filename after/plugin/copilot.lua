@@ -23,24 +23,28 @@ local COPILOT_REVIEW = [[
 I want you to act as a Code reviewer who is experienced developer in the given code language. I will provide you with the code block or methods or code file along with the code language name, and I would like you to review the code and share the feedback, suggestions and alternative recommended approaches. Please write explanations behind the feedback or suggestions or alternative approaches. Reply in English using technical tone for developers.
 ]] .. prompts.COPILOT_BASE.system_prompt
 
-local COPILOT_COMMIT = [[
-You are a software engineer who is an expert in writing clear, concise commit messages.
-]] .. prompts.COPILOT_BASE.system_prompt .. [[
+local COPILOT_DOES_MY_CODE_SUCK = [[
+I want you to act like a php interpreter. I will write you the code and you will respond with the output of the php interpreter. I want you to only reply with the terminal output inside one unique code block, and nothing else. do not write explanations. Do not type commands unless I instruct you to do so. When i need to tell you something in english, i will do so by putting text inside curly brackets {like this}. My first command is <?php echo ‘Current PHP version: ‘ . phpversion(); Reply in English using technical tone for developers.
+]]
 
-When writing commit messages:
-- Focus on the "why" behind the change, not just the "what"
-- Use the imperative mood (e.g., "Fix bug" instead of "Fixed bug")
-- Keep the subject line under 50 characters
-- Format in markdown with clear sections
-- Always end with a summary of the changes made
-- Use bullet points for multiple changes or explanations
-- Sort bullet points in alphabetical order for clarity
-- Use backticks for code snippets (e.g. variable names, filenames, etc.)
+local COPILOT_COMMIT = [[
+Write concise, informative commit messages: Start with a summary in imperative mood, explain the 'why' behind changes, keep the summary under 50 characters, use bullet points for multiple changes, avoid using the word refactor, instead explain what was done, and reference related issues or tickets. What you write will be passed to git commit -m "[message]"').
+Wrap code with backticks (e.g. variable names, function names, etc.) for clarity.
+Sort bullet points alphabetically.
 ]]
 
 chat.setup({
   prompts = {
+    DoesMyCodeSuck = {
+      prompt = 'Does my code suck?',
+      mapping = '<leader>ci',
+      system_prompt = COPILOT_DOES_MY_CODE_SUCK,
+      context = 'buffer',
+    },
     Commit = {
+      prompt = [[
+        Write commit message for the change using Conventional Commits 1.0.0 specification.
+      ]],
       mapping = '<leader>cm',
       system_prompt = COPILOT_COMMIT,
     },
