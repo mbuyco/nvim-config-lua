@@ -19,10 +19,19 @@ Always end with:
 "Current Confidence Level: X%"
 ]]
 
+local PHP_REVIEW = [[
+I want you to also support reviewing PHP code.
+Please provide feedback on the code, including:
+- Code quality and readability
+- Best practices and standards
+- Performance optimizations
+- Security considerations
+- Compatibility with PHP versions ^7.1 and ^8.0
+]]
+
 local COPILOT_REVIEW = [[
 I want you to act as a Code reviewer who is experienced developer in the given code language. I will provide you with the code block or methods or code file along with the code language name, and I would like you to review the code and share the feedback, suggestions and alternative recommended approaches. Please write explanations behind the feedback or suggestions or alternative approaches. Reply in English using technical tone for developers.
-Also, please act as an IntelliJ linter depending on the language of the current file (e.g. PHPStorm for PHP, PyCharm for Python) and provide feedback on the code quality, style, and potential improvements.
-]] .. prompts.COPILOT_BASE.system_prompt
+]] .. PHP_REVIEW .. prompts.COPILOT_BASE.system_prompt
 
 local COPILOT_DOES_MY_CODE_SUCK = [[
 I want you to act like a php interpreter. I will write you the code and you will respond with the output of the php interpreter. I want you to only reply with the terminal output inside one unique code block, and nothing else. do not write explanations. Do not type commands unless I instruct you to do so. When i need to tell you something in english, i will do so by putting text inside curly brackets {like this}. My first command is <?php echo ‘Current PHP version: ‘ . phpversion(); Reply in English using technical tone for developers.
