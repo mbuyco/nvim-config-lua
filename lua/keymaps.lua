@@ -63,6 +63,7 @@ vim.api.nvim_set_keymap('x', '<leader>p', '"_dP', { noremap = true, silent = tru
 
 -- copilot chat
 vim.api.nvim_set_keymap('n', '<leader>cc', ':CopilotChatToggle<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>cd', ':CopilotChatReset<CR>', { noremap = true, silent = true })
 
 vim.keymap.set('n', '<leader>dl', function ()
   if vim.diagnostic.config().virtual_lines then

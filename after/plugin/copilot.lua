@@ -74,7 +74,10 @@ chat.setup({
       prompt = 'Create or update the development plan for the selected code. Focus on architecture, implementation steps, and potential challenges.',
       system_prompt = COPILOT_PLAN,
       mapping = '<leader>cp',
-      context = 'file:.copilot/plan.md',
+      context = {
+        'file:.copilot/plan.md',
+        'buffer',
+      },
       progress = function()
         return false
       end,
