@@ -21,6 +21,7 @@ Always end with:
 
 local COPILOT_REVIEW = [[
 I want you to act as a Code reviewer who is experienced developer in the given code language. I will provide you with the code block or methods or code file along with the code language name, and I would like you to review the code and share the feedback, suggestions and alternative recommended approaches. Please write explanations behind the feedback or suggestions or alternative approaches. Reply in English using technical tone for developers.
+Also, please act as an IntelliJ linter depending on the language of the current file (e.g. PHPStorm for PHP, PyCharm for Python) and provide feedback on the code quality, style, and potential improvements.
 ]] .. prompts.COPILOT_BASE.system_prompt
 
 local COPILOT_DOES_MY_CODE_SUCK = [[

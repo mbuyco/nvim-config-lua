@@ -71,7 +71,6 @@ local lspconfigMap = {
       ['language_server_configuration.auto_config'] = false,
       ['language_server.diagnostics_on_update'] = false,
       ['language_server_phpstan.enabled'] = true,
-      ['language_server_phpstan.level'] = '7',
       ['php_code_sniffer.enabled'] = true,
     },
   },
