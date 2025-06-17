@@ -24,7 +24,7 @@ vim.api.nvim_set_keymap('n', '<C-l>', '<C-W>l', { noremap = true })
 
 -- close current buffer
 vim.api.nvim_set_keymap('n', '<leader>bd', ':bd<cr>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>bda', ':%bd|e#|bd#<cr>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>bq', ':%bd|e#|bd#<cr>', { noremap = true })
 
 -- close all the buffers
 vim.api.nvim_set_keymap('n', '<leader>ba', ':bufdo bd<cr>', { noremap = true })
