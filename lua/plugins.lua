@@ -105,9 +105,6 @@ return packer.startup(function(use)
   use {
     'CopilotC-Nvim/CopilotChat.nvim',
     after = 'copilot.vim',
-    config = function()
-      require('utils').setup_config('CopilotChat', {})
-    end,
   }
 
   local colorscheme = require('color')
