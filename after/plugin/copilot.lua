@@ -35,6 +35,7 @@ When writing commit messages:
 - Always end with a summary of the changes made
 - Use bullet points for multiple changes or explanations
 - Sort bullet points in alphabetical order for clarity
+- Use backticks for code snippets (e.g. variable names, filenames, etc.)
 ]]
 
 chat.setup({
