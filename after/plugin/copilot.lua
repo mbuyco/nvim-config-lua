@@ -41,7 +41,7 @@ When writing commit messages:
 chat.setup({
   prompts = {
     Commit = {
-      mapping = '<leader>cc',
+      mapping = '<leader>cm',
       system_prompt = COPILOT_COMMIT,
     },
     Optimize = {
