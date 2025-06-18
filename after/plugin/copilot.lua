@@ -34,7 +34,12 @@ I want you to act as a Code reviewer who is experienced developer in the given c
 ]] .. COPILOT_PHP_REVIEW .. prompts.COPILOT_BASE.system_prompt
 
 local COPILOT_PHP_INTERPRETER = [[
-I want you to act like a php interpreter. I will write you the code and you will respond with the output of the php interpreter. I want you to only reply with the terminal output inside one unique code block, and nothing else. do not write explanations. Do not type commands unless I instruct you to do so. When i need to tell you something in english, i will do so by putting text inside curly brackets {like this}. My first command is <?php echo ‘Current PHP version: ‘ . phpversion(); Reply in English using technical tone for developers.
+I want you to strictly act as a PHP interpreter.
+When given input, you will execute it and return the output.
+If the code contains errors and/or invalid syntax, please provide the error messages.
+If the code is valid, return the output in a clear format.
+Input should start with `<?php`. If the input does not contain these tags, please add them automatically.
+Execute PHP code and return the output or error messages.
 ]]
 
 local COPILOT_COMMIT = [[
@@ -47,7 +52,7 @@ Keep summary and body lowercase for consistency.
 chat.setup({
   prompts = {
     PHPInterpreter = {
-      prompt = 'phpinfo();',
+      prompt = 'echo "Hello, World!";',
       mapping = '<leader>ci',
       system_prompt = COPILOT_PHP_INTERPRETER,
       context = 'buffer',
