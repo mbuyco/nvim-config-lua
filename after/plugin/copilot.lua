@@ -19,7 +19,7 @@ Always end with:
 "Current Confidence Level: X%"
 ]]
 
-local PHP_REVIEW = [[
+local COPILOT_PHP_REVIEW = [[
 I want you to also support reviewing PHP code.
 Please provide feedback on the code, including:
 - Code quality and readability
@@ -31,9 +31,9 @@ Please provide feedback on the code, including:
 
 local COPILOT_REVIEW = [[
 I want you to act as a Code reviewer who is experienced developer in the given code language. I will provide you with the code block or methods or code file along with the code language name, and I would like you to review the code and share the feedback, suggestions and alternative recommended approaches. Please write explanations behind the feedback or suggestions or alternative approaches. Reply in English using technical tone for developers.
-]] .. PHP_REVIEW .. prompts.COPILOT_BASE.system_prompt
+]] .. COPILOT_PHP_REVIEW .. prompts.COPILOT_BASE.system_prompt
 
-local COPILOT_DOES_MY_CODE_SUCK = [[
+local COPILOT_PHP_INTERPRETER = [[
 I want you to act like a php interpreter. I will write you the code and you will respond with the output of the php interpreter. I want you to only reply with the terminal output inside one unique code block, and nothing else. do not write explanations. Do not type commands unless I instruct you to do so. When i need to tell you something in english, i will do so by putting text inside curly brackets {like this}. My first command is <?php echo ‘Current PHP version: ‘ . phpversion(); Reply in English using technical tone for developers.
 ]]
 
@@ -46,10 +46,10 @@ Keep summary and body lowercase for consistency.
 
 chat.setup({
   prompts = {
-    DoesMyCodeSuck = {
-      prompt = 'Does my code suck?',
+    PHPInterpreter = {
+      prompt = 'phpinfo();',
       mapping = '<leader>ci',
-      system_prompt = COPILOT_DOES_MY_CODE_SUCK,
+      system_prompt = COPILOT_PHP_INTERPRETER,
       context = 'buffer',
     },
     Commit = {
