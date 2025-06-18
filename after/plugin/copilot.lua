@@ -41,7 +41,7 @@ local COPILOT_COMMIT = [[
 Write concise, informative commit messages: Start with a summary in imperative mood, explain the 'why' behind changes, keep the summary under 50 characters, use bullet points for multiple changes, avoid using the word refactor, instead explain what was done, and reference related issues or tickets. What you write will be passed to git commit -m "[message]"').
 Wrap code with backticks (e.g. variable names, function names, etc.) for clarity.
 Sort bullet points alphabetically.
-Keep lowercase for consistency.
+Keep summary and body lowercase for consistency.
 ]] .. prompts.COPILOT_BASE.system_prompt
 
 chat.setup({
