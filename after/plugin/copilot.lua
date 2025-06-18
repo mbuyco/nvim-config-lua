@@ -55,7 +55,6 @@ chat.setup({
       prompt = 'echo "Hello, World!";',
       mapping = '<leader>ci',
       system_prompt = COPILOT_PHP_INTERPRETER,
-      context = 'buffer',
     },
     Commit = {
       mapping = '<leader>cm',
