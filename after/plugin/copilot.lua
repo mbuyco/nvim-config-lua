@@ -53,9 +53,6 @@ chat.setup({
       context = 'buffer',
     },
     Commit = {
-      prompt = [[
-        Write commit message for the change using Conventional Commits 1.0.0 specification.
-      ]],
       mapping = '<leader>cm',
       system_prompt = COPILOT_COMMIT,
     },
@@ -107,6 +104,21 @@ chat.setup({
           file:close()
         end
       end,
+    },
+    Changelog = {
+      prompt = 'Generate a changelog entry for the latest changes in the project.',
+      system_prompt = [[
+        Write a concise changelog entry for the latest changes in the project.
+        Include:
+        - Summary of changes
+        - New features
+        - Bug fixes
+        - Improvements
+        - Breaking changes
+        Use markdown format.
+      ]] .. prompts.COPILOT_BASE.system_prompt,
+      mapping = '<leader>cl',
+      context = 'buffer',
     },
   },
 })
