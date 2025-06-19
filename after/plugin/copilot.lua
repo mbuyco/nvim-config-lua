@@ -51,6 +51,14 @@ Keep summary and body lowercase for consistency.
 
 chat.setup({
   prompts = {
+    ListAllRelatedFiles = {
+      prompt = [[
+        List all files related to the current code context in this format:
+        `#file:/path/to/file.ext`
+      ]],
+      mapping = '<leader>cf',
+      context = 'buffer',
+    },
     PHPInterpreter = {
       prompt = 'echo "Hello, World!";',
       mapping = '<leader>ci',
