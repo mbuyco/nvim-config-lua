@@ -53,8 +53,13 @@ chat.setup({
   prompts = {
     ListAllRelatedFiles = {
       prompt = [[
-        List all files related to the current code context in this format:
-        `{hashtag}file:/path/to/file.ext`
+        You are a file listing assistant.
+
+        List all files related to the current code context.
+
+        - List each file on a new line.
+        - Use the format: {hashtag}file:/path/to/file.ext
+        - Include only files that are directly related to the current code context.
       ]],
       mapping = '<leader>cf',
       context = 'buffer',
