@@ -54,7 +54,7 @@ chat.setup({
     ListAllRelatedFiles = {
       prompt = [[
         List all files related to the current code context in this format:
-        `#file:/path/to/file.ext`
+        `{hashtag}file:/path/to/file.ext`
       ]],
       mapping = '<leader>cf',
       context = 'buffer',
