@@ -1,1 +1,1 @@
-return 'kanagawa-paper'
+return 'gruvbox'

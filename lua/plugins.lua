@@ -106,6 +106,10 @@ return packer.startup(function(use)
     'CopilotC-Nvim/CopilotChat.nvim',
     after = 'copilot.vim',
   }
+  use {
+    "iamcco/markdown-preview.nvim",
+    run = function() vim.fn["mkdp#util#install"]() end,
+  }
 
   local colorscheme = require('color')
 
