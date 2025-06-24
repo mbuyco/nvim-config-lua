@@ -11,9 +11,8 @@ chat.setup({
     },
     Commit = {
       prompt = default_prompts.Commit.prompt .. [[
-        Outline each change made in the codebase in markdown bullet point format.
-        Use imperative mood for commit messages.
-        Fix formatting issues and ensure markdown syntax is correct.
+        Use imperative mood.
+        Use bullet points for multiple changes.
       ]],
       mapping = '<leader>cm',
       system_prompt = user_prompts.commit,
