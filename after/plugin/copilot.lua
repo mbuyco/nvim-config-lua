@@ -10,7 +10,11 @@ chat.setup({
       context = 'buffer',
     },
     Commit = {
-      prompt = 'Write a commit message for the changes in the git staged files.',
+      prompt = default_prompts.Commit.prompt .. [[
+        Outline each change made in the codebase in markdown bullet point format.
+        Use imperative mood for commit messages.
+        Fix formatting issues and ensure markdown syntax is correct.
+      ]],
       mapping = '<leader>cm',
       system_prompt = user_prompts.commit,
     },
