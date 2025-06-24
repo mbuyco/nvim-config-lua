@@ -13,6 +13,7 @@ chat.setup({
       prompt = default_prompts.Commit.prompt .. [[
         Use imperative mood.
         Use bullet points for multiple changes.
+        When mentioning code e.g. function names, class names, or variables, use backticks to format them.
       ]],
       mapping = '<leader>cm',
       system_prompt = user_prompts.commit,
