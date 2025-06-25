@@ -2,6 +2,17 @@ local chat = require('CopilotChat')
 local default_prompts = require('CopilotChat.config.prompts')
 local user_prompts = require('prompts')
 
+local review_save_file = function(response, source)
+  local review_file = source.cwd() .. '/.copilot/review.md'
+  local dir = vim.fn.fnamemodify(review_file, ':h')
+  vim.fn.mkdir(dir, 'p')
+  local file = io.open(review_file, 'w')
+  if file then
+    file:write(response)
+    file:close()
+  end
+end
+
 chat.setup({
   prompts = {
     ListAllRelatedFiles = {
@@ -22,9 +33,22 @@ chat.setup({
       mapping = '<leader>co',
       context = 'buffer',
     },
+    PHPReview = {
+      prompt = 'Review the provided PHP code.',
+      system_prompt = user_prompts.code_review .. user_prompts.php_code_review,
+      mapping = '<leader>cpr',
+      context = 'buffer',
+      progress = function()
+        return false
+      end,
+      callback = function(response, source)
+        chat.chat:append('Review completed successfully!', source.winnr)
+        review_save_file(response, source)
+      end,
+    },
     Review = {
       prompt = 'Review the provided code.',
-      system_prompt = user_prompts.code_review .. user_prompts.php_code_review,
+      system_prompt = user_prompts.code_review,
       mapping = '<leader>cr',
       context = 'buffer',
       progress = function()
@@ -32,14 +56,7 @@ chat.setup({
       end,
       callback = function(response, source)
         chat.chat:append('Review completed successfully!', source.winnr)
-        local review_file = source.cwd() .. '/.copilot/review.md'
-        local dir = vim.fn.fnamemodify(review_file, ':h')
-        vim.fn.mkdir(dir, 'p')
-        local file = io.open(review_file, 'w')
-        if file then
-          file:write(response)
-          file:close()
-        end
+        review_save_file(response, source)
       end,
     },
     Plan = {
