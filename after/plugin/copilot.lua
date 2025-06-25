@@ -46,6 +46,19 @@ chat.setup({
         review_save_file(response, source)
       end,
     },
+    DevopsReview = {
+      prompt = 'Review the provided code/configurations.',
+      system_prompt = user_prompts.devops_consultant,
+      mapping = '<leader>cdr',
+      context = 'buffer',
+      progress = function()
+        return false
+      end,
+      callback = function(response, source)
+        chat.chat:append('Review completed successfully!', source.winnr)
+        review_save_file(response, source)
+      end,
+    },
     Review = {
       prompt = 'Review the provided code.',
       system_prompt = user_prompts.code_review,
