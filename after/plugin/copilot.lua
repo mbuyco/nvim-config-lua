@@ -1,3 +1,15 @@
+vim.api.nvim_create_autocmd('BufEnter', {
+  pattern = 'copilot-*',
+  callback = function()
+    vim.keymap.set('n', '<C-l>', '<C-w>l', { buffer = true, silent = true, noremap = true })
+    vim.keymap.set('i', '<C-l>', '<C-w>l', { buffer = true, silent = true, noremap = true })
+    vim.cmd('vertical resize 69')
+  end
+})
+
+vim.api.nvim_set_keymap('i', '<leader><Tab>', 'copilot#Accept("\\<CR>")', { silent = true, expr = true, script = true })
+vim.g.copilot_no_tab_map = true
+
 -- local chat = require('CopilotChat')
 -- local default_prompts = require('CopilotChat.config.prompts')
 -- local user_prompts = require('prompts')
@@ -113,15 +125,3 @@
 --     },
 --   },
 -- })
---
--- vim.api.nvim_create_autocmd('BufEnter', {
---   pattern = 'copilot-*',
---   callback = function()
---     vim.keymap.set('n', '<C-l>', '<C-w>l', { buffer = true, silent = true, noremap = true })
---     vim.keymap.set('i', '<C-l>', '<C-w>l', { buffer = true, silent = true, noremap = true })
---     vim.cmd('vertical resize 69')
---   end
--- })
---
--- vim.api.nvim_set_keymap('i', '<leader><Tab>', 'copilot#Accept("\\<CR>")', { silent = true, expr = true, script = true })
--- vim.g.copilot_no_tab_map = true

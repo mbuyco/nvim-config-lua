@@ -1,1 +1,7 @@
 require("codecompanion").setup({})
+vim.keymap.set("n", "<leader>cc", function()
+  require("codecompanion").toggle()
+end, { desc = "Toggle Code Companion" })
+vim.keymap.set("n", "<leader>ca", function()
+  require("codecompanion").actions()
+end, { desc = "Attach Code Companion" })
