@@ -62,9 +62,6 @@ vim.api.nvim_set_keymap('v', '<C-_>', 'gc', { silent = true })
 -- primeagean remap
 vim.api.nvim_set_keymap('x', '<leader>p', '"_dP', { noremap = true, silent = true })
 
-vim.api.nvim_set_keymap('n', '<leader>cc', ':CodeCompanionChat Toggle<CR>', { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('n', '<leader>cd', ':CopilotChatReset<CR>', { noremap = true, silent = true })
-
 vim.keymap.set('n', '<leader>dl', function ()
   if vim.diagnostic.config().virtual_lines then
 		vim.diagnostic.config({ virtual_lines = false })

@@ -43,6 +43,7 @@ return packer.startup(function(use)
   use 'L3MON4D3/LuaSnip' -- Snippets plugin 'neovim/nvim-lspconfig'
   use 'Xuyuanp/nerdtree-git-plugin'
   use 'christoomey/vim-tmux-navigator'
+  use 'CopilotC-Nvim/CopilotChat.nvim'
   use 'github/copilot.vim'
   use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
   use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
@@ -101,39 +102,6 @@ return packer.startup(function(use)
   use {
     'nvim-telescope/telescope-fzf-native.nvim',
     run = 'make',
-  }
-  use {
-    "olimorris/codecompanion.nvim",
-    requires = {
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-    }
-  }
-  use {
-    "MeanderingProgrammer/render-markdown.nvim",
-    ft = { "markdown", "codecompanion" }
-  }
-  use {
-    "echasnovski/mini.diff",
-    config = function()
-      local diff = require("mini.diff")
-      diff.setup({
-        -- Disabled by default
-        source = diff.gen_source.none(),
-      })
-    end,
-  }
-  use {
-    "HakonHarnes/img-clip.nvim",
-    opts = {
-      filetypes = {
-        codecompanion = {
-          prompt_for_file_name = false,
-          template = "[Image]($FILE_PATH)",
-          use_absolute_path = true,
-        },
-      },
-    },
   }
 
   local colorscheme = require('color')
