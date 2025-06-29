@@ -1,8 +1,4 @@
-local telescope = require('utils').get_package('telescope')
-if not telescope then
-	return
-end
-
+local telescope = require('telescope')
 local builtin = require('telescope.builtin')
 
 -- You dont need to set any of these options. These are the default ones. Only
@@ -27,7 +23,7 @@ telescope.setup({
         ["<C-h>"] = "which_key",
         ["<C-j>"] = "cycle_history_next",
         ["<C-k>"] = "cycle_history_prev"
-      }
+      },
     },
     extensions = {
       fzf = {
@@ -35,14 +31,15 @@ telescope.setup({
         override_generic_sorter = true,
         override_file_sorter = true,
         case_mode = "smart_case",
-      }
-    }
-  }
+      },
+    },
+  },
 })
 
 -- Load extensions
 telescope.load_extension('fzf')
 telescope.load_extension('live_grep_args')
+telescope.load_extension('ui-select')
 
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', require('telescope').extensions.live_grep_args.live_grep_args, {})

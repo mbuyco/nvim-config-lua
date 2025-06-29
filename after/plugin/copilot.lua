@@ -54,8 +54,8 @@ end
 chat.setup({
   model = 'gpt-4.1',
   debug = true,
-  question_header = ' ' .. '🐵' .. ' [[Unggoy]] ',
-  answer_header = ' ' .. '🤖' .. ' [[Copaylot]] ',
+  question_header = ' ' .. '🐵' .. ' [[User]] ',
+  answer_header = ' ' .. '🤖' .. ' [[Copilot]] ',
   temperature = 0,
   prompts = {
     ListAllRelatedFiles = {
