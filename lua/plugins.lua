@@ -64,7 +64,6 @@ return packer.startup(function(use)
   use 'windwp/nvim-autopairs'
 
   -- Colorscheme
-  use 'rktjmp/lush.nvim'
   use 'folke/tokyonight.nvim'
   use 'gruvbox-community/gruvbox'
   use 'jacoborus/tender.vim'
@@ -73,7 +72,9 @@ return packer.startup(function(use)
   use 'marko-cerovac/material.nvim'
   use 'mhartington/oceanic-next'
   use 'overcache/NeoSolarized'
+  use 'projekt0n/github-nvim-theme'
   use 'rebelot/kanagawa.nvim'
+  use 'rktjmp/lush.nvim'
   use 'sainnhe/everforest'
   use 'tanvirtin/monokai.nvim'
   use 'thesimonho/kanagawa-paper.nvim'
@@ -103,6 +104,18 @@ return packer.startup(function(use)
   use {
     'nvim-telescope/telescope-fzf-native.nvim',
     run = 'make',
+  }
+  use {
+    "iamcco/markdown-preview.nvim",
+    run = function() vim.fn["mkdp#util#install"]() end,
+  }
+  use {
+    'MeanderingProgrammer/render-markdown.nvim',
+    after = { 'nvim-treesitter' },
+    requires = { 'nvim-tree/nvim-web-devicons', opt = true }, -- if you prefer nvim-web-devicons
+    config = function()
+        require('render-markdown').setup({})
+    end,
   }
 
   local colorscheme = require('color')
