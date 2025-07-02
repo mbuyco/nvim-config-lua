@@ -117,7 +117,7 @@ chat.setup({
     },
     Plan = {
       prompt = 'Create or update the development plan for the selected code. Focus on architecture, implementation steps, and potential challenges.',
-      system_prompt = default_prompts.COPILOT_BASE.system_prompt .. user_prompts.software_architect_plan,
+      system_prompt = user_prompts.software_architect_plan,
       mapping = '<leader>cp',
       context = {
         'file:.copilot/plan.md',

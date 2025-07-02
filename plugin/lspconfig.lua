@@ -69,6 +69,9 @@ local lspconfigMap = {
     cmd = { 'phpactor', 'language-server', '-vvv' },
     init_options = {
       ['language_server_configuration.auto_config'] = false,
+      ['language_server.diagnostic_exclude_paths'] = {
+        'vendor/**/*',
+      },
       ['language_server.diagnostics_on_update'] = false,
       ['language_server_phpstan.enabled'] = true,
       ['php_code_sniffer.enabled'] = true,
