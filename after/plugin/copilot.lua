@@ -1,3 +1,19 @@
+local utils = require('utils')
+
+local copilot = utils.get_package('copilot')
+if not copilot then
+  return
+end
+
+-- Copilot completion
+vim.api.nvim_set_keymap('i', '<leader><Tab>', 'copilot#Accept("\\<CR>")', { silent = true, expr = true, script = true })
+vim.g.copilot_no_tab_map = true
+
+local copilot_chat = utils.get_package('CopilotChat')
+if not copilot_chat then
+  return
+end
+
 -- Chat buffer keymaps
 vim.api.nvim_create_autocmd('BufEnter', {
   pattern = 'copilot-*',
@@ -8,9 +24,6 @@ vim.api.nvim_create_autocmd('BufEnter', {
   end
 })
 
--- Copilot completion
-vim.api.nvim_set_keymap('i', '<leader><Tab>', 'copilot#Accept("\\<CR>")', { silent = true, expr = true, script = true })
-vim.g.copilot_no_tab_map = true
 
 local chat = require('CopilotChat')
 local default_prompts = require('CopilotChat.config.prompts')

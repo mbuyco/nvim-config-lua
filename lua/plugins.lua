@@ -43,7 +43,6 @@ return packer.startup(function(use)
   use 'L3MON4D3/LuaSnip' -- Snippets plugin 'neovim/nvim-lspconfig'
   use 'Xuyuanp/nerdtree-git-plugin'
   use 'christoomey/vim-tmux-navigator'
-  use 'CopilotC-Nvim/CopilotChat.nvim'
   use 'github/copilot.vim'
   use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
   use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
