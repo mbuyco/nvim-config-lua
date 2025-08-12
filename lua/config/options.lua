@@ -5,7 +5,6 @@ end
 -- options
 vim.opt.autoindent = true
 vim.opt.autoread = true
-vim.opt.background = require('config.background')
 vim.opt.backup = false
 vim.opt.clipboard = 'unnamed'
 vim.opt.cmdheight = 1

@@ -13,7 +13,7 @@ return {
   'nvim-telescope/telescope-ui-select.nvim',
   'saadparwaiz1/cmp_luasnip',
   'tpope/vim-fugitive',
-  
+
   -- Colorschemes
   'folke/tokyonight.nvim',
   'gruvbox-community/gruvbox',
@@ -197,5 +197,18 @@ return {
     config = function()
       vim.g.startify_change_to_dir = 0
     end,
+  },
+
+  {
+      "Exafunction/windsurf.nvim",
+      lazy = false,
+      dependencies = {
+          "nvim-lua/plenary.nvim",
+          "hrsh7th/nvim-cmp",
+      },
+      config = function()
+          require("codeium").setup({
+          })
+      end
   },
 }
