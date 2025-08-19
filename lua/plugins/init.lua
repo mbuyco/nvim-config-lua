@@ -2,6 +2,7 @@ return {
   'L3MON4D3/LuaSnip',
   'Xuyuanp/nerdtree-git-plugin',
   'christoomey/vim-tmux-navigator',
+  'github/copilot.vim',
   'hrsh7th/cmp-nvim-lsp',
   'hrsh7th/nvim-cmp',
   'jwalton512/vim-blade',
@@ -13,7 +14,7 @@ return {
   'nvim-telescope/telescope-ui-select.nvim',
   'saadparwaiz1/cmp_luasnip',
   'tpope/vim-fugitive',
-  
+
   -- Colorschemes
   'folke/tokyonight.nvim',
   'gruvbox-community/gruvbox',
@@ -197,5 +198,21 @@ return {
     config = function()
       vim.g.startify_change_to_dir = 0
     end,
+  },
+
+  {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    dependencies = {
+      { "nvim-lua/plenary.nvim", branch = "master" },
+    },
+    build = "make tiktoken",
+    opts = {
+      model = 'claude-sonnet-4',
+      temperature = 0.1,
+      window = {
+        layout = 'vertical',
+        width = 80,
+      }
+    },
   },
 }
