@@ -216,7 +216,7 @@ return {
       temperature = 0.1,
       window = {
         layout = 'vertical',
-        width = 80,
+        width = 60,
       }
     },
   },
