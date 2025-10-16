@@ -220,4 +220,17 @@ return {
       }
     },
   },
+
+  {
+    "allaman/emoji.nvim",
+    version = "1.0.0", -- optionally pin to a tag
+    ft = "markdown", -- adjust to your needs
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    opts = {
+      -- default is false, also needed for blink.cmp integration!
+      enable_cmp_integration = true,
+    },
+  }
 }

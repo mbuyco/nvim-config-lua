@@ -135,6 +135,7 @@ cmp.setup({
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
     { name = 'codeium' },
+    { name = 'emoji' },
   },
 })
 
