@@ -159,32 +159,36 @@ return {
 
   {
     'nvim-treesitter/nvim-treesitter',
-    opts = {
-      ensure_installed = {
-        "bash",
-        "css",
-        "go",
-        "html",
-        "javascript",
-        "json",
-        "lua",
-        "php",
-        "python",
-        "ruby",
-        "scss",
-        "svelte",
-        "typescript",
-        "vim",
-        "vue",
-        "yaml",
-      },
-      highlight = {
-        enable = true,
-      },
-      indent = {
-        enable = true,
-      },
-    },
+    lazy = false,
+    branch = 'master',
+    config = function()
+      require('nvim-treesitter.configs').setup({
+        ensure_installed = {
+          "bash",
+          "css",
+          "go",
+          "html",
+          "javascript",
+          "json",
+          "lua",
+          "php",
+          "python",
+          "ruby",
+          "scss",
+          "svelte",
+          "typescript",
+          "vim",
+          "vue",
+          "yaml",
+        },
+        highlight = {
+          enable = true,
+        },
+        indent = {
+          enable = true,
+        },
+      })
+    end,
   },
 
   {
