@@ -172,6 +172,7 @@ return {
         "python",
         "ruby",
         "scss",
+        "svelte",
         "typescript",
         "vim",
         "vue",

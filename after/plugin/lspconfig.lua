@@ -7,6 +7,7 @@ local lsp_servers = {
   'phpactor',
   'pyright',
   'robotframework_ls',
+  'svelte',
   'ts_ls',
   'vue_ls',
 }
