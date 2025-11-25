@@ -35,6 +35,7 @@ local lspconfigMap = {
       "less",
       "sass",
       "scss",
+      "svelte",
       "php",
       "pug",
       "typescriptreact",
