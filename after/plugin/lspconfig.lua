@@ -1,4 +1,5 @@
 local lsp_servers = {
+  'deno_ls'
   'emmet_language_server',
   'html',
   'intelephense',
@@ -72,8 +73,6 @@ local lspconfigMap = {
       ['language_server.diagnostic_exclude_paths'] = {
         'vendor/**/*',
       },
-      ['language_server.diagnostics_on_update'] = false,
-      ['language_server_phpstan.enabled'] = true,
       ['php_code_sniffer.enabled'] = true,
     },
   },
