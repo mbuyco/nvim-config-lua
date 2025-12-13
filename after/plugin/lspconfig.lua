@@ -1,5 +1,5 @@
 local lsp_servers = {
-  'deno_ls',
+  'denols',
   'emmet_language_server',
   'html',
   'intelephense',
