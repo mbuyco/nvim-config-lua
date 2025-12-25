@@ -2,6 +2,9 @@ if vim.fn.has("termguicolors") == 1 then
   vim.o.termguicolors = true
 end
 
+-- disable editorconfig
+vim.g.editorconfig = false
+
 -- options
 vim.opt.autoindent = true
 vim.opt.autoread = true
