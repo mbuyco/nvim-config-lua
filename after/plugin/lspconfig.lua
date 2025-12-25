@@ -28,6 +28,7 @@ end
 local lspconfigMap = {
   emmet_language_server = {
     filetypes = {
+      "blade",
       "css",
       "eruby",
       "html",
