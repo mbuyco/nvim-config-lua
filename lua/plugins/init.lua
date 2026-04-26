@@ -239,7 +239,7 @@ return {
         python = "python3"
       end
       return {
-        model_name = "llama3.2:1b",
+        model_name = "codegemma:2b",
         python_command = python,
         filetypes = {
           'lua',
