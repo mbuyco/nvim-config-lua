@@ -1,50 +1,50 @@
 return {
-  'L3MON4D3/LuaSnip',
-  'Xuyuanp/nerdtree-git-plugin',
-  'christoomey/vim-tmux-navigator',
-  'hrsh7th/cmp-nvim-lsp',
-  'hrsh7th/nvim-cmp',
-  'jwalton512/vim-blade',
-  'lewis6991/gitsigns.nvim',
-  'neovim/nvim-lspconfig',
-  'numToStr/Comment.nvim',
-  'nvim-lua/plenary.nvim',
-  'nvim-lua/popup.nvim',
-  'nvim-telescope/telescope-ui-select.nvim',
-  'saadparwaiz1/cmp_luasnip',
-  'tpope/vim-fugitive',
+  "L3MON4D3/LuaSnip",
+  "Xuyuanp/nerdtree-git-plugin",
+  "christoomey/vim-tmux-navigator",
+  "hrsh7th/cmp-nvim-lsp",
+  "hrsh7th/nvim-cmp",
+  "jwalton512/vim-blade",
+  "lewis6991/gitsigns.nvim",
+  "neovim/nvim-lspconfig",
+  "numToStr/Comment.nvim",
+  "nvim-lua/plenary.nvim",
+  "nvim-lua/popup.nvim",
+  "nvim-telescope/telescope-ui-select.nvim",
+  "saadparwaiz1/cmp_luasnip",
+  "tpope/vim-fugitive",
 
   -- Colorschemes
-  'folke/tokyonight.nvim',
-  'gruvbox-community/gruvbox',
-  'jacoborus/tender.vim',
-  'joshdick/onedark.vim',
-  'kaplanz/deku.nvim',
-  'marko-cerovac/material.nvim',
-  'mhartington/oceanic-next',
-  'overcache/NeoSolarized',
-  'projekt0n/github-nvim-theme',
-  'rebelot/kanagawa.nvim',
-  'rktjmp/lush.nvim',
-  'sainnhe/everforest',
-  'tanvirtin/monokai.nvim',
-  'thesimonho/kanagawa-paper.nvim',
-  'tomasiser/vim-code-dark',
-  'vigoux/oak',
+  "folke/tokyonight.nvim",
+  "gruvbox-community/gruvbox",
+  "jacoborus/tender.vim",
+  "joshdick/onedark.vim",
+  "kaplanz/deku.nvim",
+  "marko-cerovac/material.nvim",
+  "mhartington/oceanic-next",
+  "overcache/NeoSolarized",
+  "projekt0n/github-nvim-theme",
+  "rebelot/kanagawa.nvim",
+  "rktjmp/lush.nvim",
+  "sainnhe/everforest",
+  "tanvirtin/monokai.nvim",
+  "thesimonho/kanagawa-paper.nvim",
+  "tomasiser/vim-code-dark",
+  "vigoux/oak",
 
   {
-    'windwp/nvim-autopairs',
+    "windwp/nvim-autopairs",
     opts = {
       map_cr = true,
     },
   },
 
   {
-    'nvim-telescope/telescope.nvim',
-    branch = '0.1.x',
+    "nvim-telescope/telescope.nvim",
+    branch = "0.1.x",
     dependencies = {
-      {'nvim-lua/plenary.nvim'},
-      {'nvim-telescope/telescope-live-grep-args.nvim'},
+      {"nvim-lua/plenary.nvim"},
+      {"nvim-telescope/telescope-live-grep-args.nvim"},
     },
     opts = {
       defaults = {
@@ -54,12 +54,12 @@ return {
           ".git",
         },
         vimgrep_arguments = {
-          'rg',
-          '--vimgrep',
-          '--smart-case',
-          '--hidden',
-          '--fixed-strings',
-          '-j1',
+          "rg",
+          "--vimgrep",
+          "--smart-case",
+          "--hidden",
+          "--fixed-strings",
+          "-j1",
         },
         mappings = {
           i = {
@@ -79,33 +79,33 @@ return {
       },
     },
     config = function()
-      local telescope = require('telescope')
-      local builtin = require('telescope.builtin')
+      local telescope = require("telescope")
+      local builtin = require("telescope.builtin")
 
-      telescope.load_extension('fzf')
-      telescope.load_extension('live_grep_args')
-      telescope.load_extension('ui-select')
+      telescope.load_extension("fzf")
+      telescope.load_extension("live_grep_args")
+      telescope.load_extension("ui-select")
 
-      vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-      vim.keymap.set('n', '<leader>fg', require('telescope').extensions.live_grep_args.live_grep_args, {})
-      vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-      vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+      vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
+      vim.keymap.set("n", "<leader>fg", require("telescope").extensions.live_grep_args.live_grep_args, {})
+      vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
+      vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
     end,
   },
 
   {
-    'akinsho/bufferline.nvim',
-    dependencies = {'nvim-tree/nvim-web-devicons'},
+    "akinsho/bufferline.nvim",
+    dependencies = {"nvim-tree/nvim-web-devicons"},
     opts = {
       options = {
-        numbers = 'ordinal',
+        numbers = "ordinal",
       },
     },
   },
 
   {
-    'nvim-telescope/telescope-fzf-native.nvim',
-    build = 'make',
+    "nvim-telescope/telescope-fzf-native.nvim",
+    build = "make",
   },
 
   {
@@ -119,35 +119,35 @@ return {
   },
 
   {
-    'MeanderingProgrammer/render-markdown.nvim',
-    after = { 'nvim-treesitter' },
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    "MeanderingProgrammer/render-markdown.nvim",
+    after = { "nvim-treesitter" },
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {},
   },
 
   {
-    'nvim-lualine/lualine.nvim',
+    "nvim-lualine/lualine.nvim",
     opts = {
       options = {
         icons_enabled = true,
-        theme = 'gruvbox',
-        component_separators = {'', ''},
-        section_separators = {'', ''},
+        theme = "gruvbox",
+        component_separators = {"", ""},
+        section_separators = {"", ""},
         disabled_filetypes = {},
       },
       sections = {
-        lualine_a = {'mode', 'g:coc_status', 'bo:filetype'},
-        lualine_b = {'branch'},
-        lualine_c = {'filename'},
-        lualine_x = {'encoding', 'fileformat', 'filetype'},
-        lualine_y = {'progress'},
-        lualine_z = {'location'},
+        lualine_a = {"mode", "g:coc_status", "bo:filetype"},
+        lualine_b = {"branch"},
+        lualine_c = {"filename"},
+        lualine_x = {"encoding", "fileformat", "filetype"},
+        lualine_y = {"progress"},
+        lualine_z = {"location"},
       },
       inactive_sections = {
         lualine_a = {},
         lualine_b = {},
-        lualine_c = {'filename'},
-        lualine_x = {'location'},
+        lualine_c = {"filename"},
+        lualine_x = {"location"},
         lualine_y = {},
         lualine_z = {},
       },
@@ -157,11 +157,11 @@ return {
   },
 
   {
-    'nvim-treesitter/nvim-treesitter',
+    "nvim-treesitter/nvim-treesitter",
     lazy = false,
-    branch = 'master',
+    branch = "master",
     config = function()
-      require('nvim-treesitter.configs').setup({
+      require("nvim-treesitter.configs").setup({
         ensure_installed = {
           "bash",
           "css",
@@ -191,19 +191,19 @@ return {
   },
 
   {
-    'preservim/nerdtree',
+    "preservim/nerdtree",
     config = function()
-      vim.api.nvim_set_keymap('n', '<C-t>', ':NERDTreeToggle<CR>', { noremap = true })
-      vim.api.nvim_set_keymap('n', '<leader>F', ':NERDTreeFind<CR>', { noremap = true })
+      vim.api.nvim_set_keymap("n", "<C-t>", ":NERDTreeToggle<CR>", { noremap = true })
+      vim.api.nvim_set_keymap("n", "<leader>F", ":NERDTreeFind<CR>", { noremap = true })
 
       vim.g.NERDTreeFileLines = 1
-      vim.g.NERDTreeWinPos = 'right'
+      vim.g.NERDTreeWinPos = "right"
       vim.g.NERDTreeWinSize = 50
     end,
   },
 
   {
-    'mhinz/vim-startify',
+    "mhinz/vim-startify",
     config = function()
       vim.g.startify_change_to_dir = 0
     end,
@@ -220,5 +220,28 @@ return {
       -- default is false, also needed for blink.cmp integration!
       enable_cmp_integration = true,
     },
+  },
+
+  {
+    "Jacob411/Ollama-Copilot",
+    build = function()
+      local python = vim.fn.stdpath("config") .. "/venv/bin/python3"
+      if vim.fn.executable(python) == 1 then
+        vim.fn.system({ python, "-m", "pip", "install", "pygls<2.0.0", "ollama" })
+      else
+        vim.notify("Ollama-Copilot: python not found at " .. python, vim.log.levels.WARN)
+      end
+    end,
+    opts = function()
+      local python = vim.fn.stdpath("config") .. "/venv/bin/python3"
+      if vim.fn.executable(python) ~= 1 then
+        vim.notify("Ollama-Copilot: using fallback python3; venv python missing", vim.log.levels.WARN)
+        python = "python3"
+      end
+      return {
+        model_name = "llama3.2:1b",
+        python_command = python,
+      }
+    end,
   },
 }
