@@ -2,7 +2,6 @@ return {
   'L3MON4D3/LuaSnip',
   'Xuyuanp/nerdtree-git-plugin',
   'christoomey/vim-tmux-navigator',
-  'github/copilot.vim',
   'hrsh7th/cmp-nvim-lsp',
   'hrsh7th/nvim-cmp',
   'jwalton512/vim-blade',
@@ -211,22 +210,6 @@ return {
   },
 
   {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    dependencies = {
-      { "nvim-lua/plenary.nvim", branch = "master" },
-    },
-    build = "make tiktoken",
-    opts = {
-      model = 'claude-sonnet-4',
-      temperature = 0.1,
-      window = {
-        layout = 'vertical',
-        width = 60,
-      }
-    },
-  },
-
-  {
     "allaman/emoji.nvim",
     version = "1.0.0", -- optionally pin to a tag
     ft = "markdown", -- adjust to your needs
@@ -237,5 +220,5 @@ return {
       -- default is false, also needed for blink.cmp integration!
       enable_cmp_integration = true,
     },
-  }
+  },
 }
