@@ -2,6 +2,7 @@ return {
   "L3MON4D3/LuaSnip",
   "Xuyuanp/nerdtree-git-plugin",
   "christoomey/vim-tmux-navigator",
+  "github/copilot.vim",
   "hrsh7th/cmp-nvim-lsp",
   "hrsh7th/nvim-cmp",
   "jwalton512/vim-blade",
@@ -222,7 +223,7 @@ return {
     },
   },
 
-  {
+--[[ {
     "Jacob411/Ollama-Copilot",
     build = function()
       local python = vim.fn.stdpath("config") .. "/venv/bin/python3"
@@ -239,7 +240,7 @@ return {
         python = "python3"
       end
       return {
-        model_name = "codegemma:2b",
+        model_name = "deepseek-coder:1.3b",
         python_command = python,
         filetypes = {
           'lua',
@@ -266,4 +267,5 @@ return {
       }
     end,
   },
+  ]]
 }

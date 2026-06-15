@@ -87,3 +87,7 @@ for i = 1, 9 do
     require('bufferline').go_to_buffer(i, true)
   end, { noremap = true, silent = true })
 end
+
+-- Copilot
+vim.g.copilot_no_tab_map = true
+vim.keymap.set('i', '<leader><Tab>', 'copilot#Accept("\\<leader><Tab>")', { expr = true, replace_keycodes = false })
