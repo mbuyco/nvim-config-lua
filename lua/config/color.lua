@@ -1,1 +1,1 @@
-return 'material-darker'
+return 'kanagawa'
