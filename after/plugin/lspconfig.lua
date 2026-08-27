@@ -10,6 +10,7 @@ local lsp_servers = {
   'pyright',
   'robotframework_ls',
   'svelte',
+  'tsc',
   'vue_ls',
 }
 
@@ -76,6 +77,11 @@ local lspconfigMap = {
       },
       ['php_code_sniffer.enabled'] = true,
     },
+  },
+
+  -- typescript config
+  tsc = {
+    cmd = {'tsc', '--lsp', '--stdio'},
   },
 }
 
