@@ -10,7 +10,6 @@ local lsp_servers = {
   'pyright',
   'robotframework_ls',
   'svelte',
-  'ts_ls',
   'vue_ls',
 }
 

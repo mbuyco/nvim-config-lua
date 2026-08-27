@@ -22,6 +22,7 @@ return {
   "joshdick/onedark.vim",
   "kaplanz/deku.nvim",
   "marko-cerovac/material.nvim",
+  'maxmx03/solarized.nvim',
   "mhartington/oceanic-next",
   "overcache/NeoSolarized",
   "projekt0n/github-nvim-theme",
