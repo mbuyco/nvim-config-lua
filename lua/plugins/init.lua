@@ -162,11 +162,11 @@ return {
 
   {
     "nvim-treesitter/nvim-treesitter",
+    branch = "main",
     lazy = false,
     build = ":TSUpdate",
     config = function()
-      require("nvim-treesitter.install").prefer_git = true
-      require("nvim-treesitter.configs").setup({
+      require("nvim-treesitter.config").setup({
         ensure_installed = {
           "bash",
           "css",
@@ -175,6 +175,7 @@ return {
           "javascript",
           "json",
           "lua",
+          "markdown",
           "php",
           "python",
           "ruby",
