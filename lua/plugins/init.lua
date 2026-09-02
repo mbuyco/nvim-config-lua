@@ -43,7 +43,6 @@ return {
 
   {
     "nvim-telescope/telescope.nvim",
-    branch = "0.1.x",
     dependencies = {
       {"nvim-lua/plenary.nvim"},
       {"nvim-telescope/telescope-live-grep-args.nvim"},
@@ -162,36 +161,37 @@ return {
 
   {
     "nvim-treesitter/nvim-treesitter",
-    branch = "main",
     lazy = false,
     build = ":TSUpdate",
     config = function()
-      require("nvim-treesitter.config").setup({
-        ensure_installed = {
-          "bash",
-          "css",
-          "go",
-          "html",
-          "javascript",
-          "json",
-          "lua",
-          "markdown",
-          "php",
-          "python",
-          "ruby",
-          "scss",
-          "svelte",
-          "typescript",
-          "vim",
-          "vue",
-          "yaml",
-        },
-        highlight = {
-          enable = true,
-        },
-        indent = {
-          enable = true,
-        },
+      local ts = require("nvim-treesitter")
+
+      ts.setup()
+
+      ts.install({
+        "bash",
+        "css",
+        "go",
+        "html",
+        "javascript",
+        "json",
+        "lua",
+        "markdown",
+        "php",
+        "python",
+        "ruby",
+        "scss",
+        "svelte",
+        "typescript",
+        "vim",
+        "vue",
+        "yaml",
+      })
+
+      vim.api.nvim_create_autocmd("FileType", {
+        callback = function()
+          pcall(vim.treesitter.start)
+        end,
       })
     end,
   },
