@@ -62,7 +62,7 @@ vim.api.nvim_set_keymap('v', '<C-_>', 'gc', { silent = true })
 -- primeagean remap
 vim.api.nvim_set_keymap('x', '<leader>p', '"_dP', { noremap = true, silent = true })
 
-vim.keymap.set('n', '<leader>dl', function ()
+vim.keymap.set('n', '<leader>dl', function()
   if vim.diagnostic.config().virtual_lines then
 		vim.diagnostic.config({ virtual_lines = false })
 	else
@@ -70,7 +70,7 @@ vim.keymap.set('n', '<leader>dl', function ()
 	end
 end, { noremap = true, silent = true })
 
-vim.keymap.set('n', '<leader>dt', function ()
+vim.keymap.set('n', '<leader>dt', function()
   if vim.diagnostic.config().virtual_text then
     vim.diagnostic.config({ virtual_text = false })
   else
@@ -91,3 +91,26 @@ end
 -- Copilot
 vim.g.copilot_no_tab_map = true
 vim.keymap.set('i', '<leader><Tab>', 'copilot#Accept("\\<leader><Tab>")', { expr = true, replace_keycodes = false })
+
+-- nvim-dap
+vim.keymap.set("n", "<leader>db", function()
+  require("dap").toggle_breakpoint()
+end, {})
+vim.keymap.set("n", "<leader>dc", function()
+  require("dap").continue()
+end, {})
+vim.keymap.set("n", "<leader>dr", function()
+  require("dap").repl.toggle()
+end, {})
+vim.keymap.set("n", "<leader>dt", function()
+  require("dapui").toggle()
+end, {})
+vim.keymap.set("n", "<leader>O", function()
+  require("dap").step_over()
+end, {})
+vim.keymap.set("n", "<leader>I", function()
+  require("dap").step_into()
+end, {})
+vim.keymap.set("n", "<leader>X", function()
+  require("dap").step_out()
+end, {})

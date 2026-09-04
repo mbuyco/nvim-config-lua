@@ -217,14 +217,95 @@ return {
 
   {
     "allaman/emoji.nvim",
-    version = "1.0.0", -- optionally pin to a tag
-    ft = "markdown", -- adjust to your needs
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
+    version = "1.0.0", -- optionally pin to a tag
+    ft = "markdown", -- adjust to your needs
     opts = {
       -- default is false, also needed for blink.cmp integration!
       enable_cmp_integration = true,
     },
   },
+
+  {
+    "mfussenegger/nvim-dap",
+    dependencies = {
+      "rcarriga/nvim-dap-ui",
+      "nvim-neotest/nvim-nio",
+    },
+    config = function()
+      local dap = require("dap")
+      local dapui = require("dapui")
+
+      dapui.setup()
+
+      -- auto open dapui on dap events
+      dap.listeners.before.attach.dapui_config = function()
+        dapui.open()
+      end
+      dap.listeners.before.launch.dapui_config = function()
+        dapui.open()
+      end
+      dap.listeners.before.event_terminated.dapui_config = function()
+        dapui.close()
+      end
+      dap.listeners.before.event_exited.dapui_config = function()
+        dapui.close()
+      end
+
+      dap.adapters["pwa-node"] = {
+        type = "server",
+        host = "localhost",
+        port = "${port}",
+        executable = {
+          command = "node",
+          args = {
+            os.getenv("HOME") .. "/.local/share/vscode-js-debug/js-debug/src/dapDebugServer.js",
+            "${port}",
+          },
+        }
+      }
+
+      local dap_js_lang = {
+        "javascript",
+        "typescript",
+      }
+
+      for _, language in ipairs(dap_js_lang) do
+        dap.configurations[language] = {
+          {
+            type = "pwa-node",
+            request = "launch",
+            name = "Launch file",
+            program = "${file}",
+            cwd = "${workspaceFolder}",
+            runtimeExecutable = "npx",
+            runtimeArgs = { "tsx" },
+            resolveSourceMapLocations = {
+              '${workspaceFolder}/**',
+              '!**/node_modules/**',
+            },
+            sourceMaps = true,
+            protocol = "inspector",
+            console = "integratedTerminal",
+            skipFiles = {
+              '<node_internals>/**',
+              '**/node_modules/**',
+            },
+          },
+          {
+            type = "pwa-chrome",
+            request = "launch",
+            name = "Debug Astro Client (Chrome)",
+            url = "http://localhost:4321",
+            webRoot = "${workspaceFolder}",
+            sourceMaps = true,
+            userDataDir = false,
+          },
+        }
+      end
+    end
+  },
+
 }
