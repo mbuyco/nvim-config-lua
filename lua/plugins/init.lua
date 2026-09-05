@@ -261,7 +261,7 @@ return {
         executable = {
           command = "node",
           args = {
-            os.getenv("HOME") .. "/.local/share/vscode-js-debug/js-debug/src/dapDebugServer.js",
+            os.getenv("HOME") .. "/.local/share/js-debug/src/dapDebugServer.js",
             "${port}",
           },
         }
