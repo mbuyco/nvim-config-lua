@@ -254,6 +254,7 @@ return {
         dapui.close()
       end
 
+      -- dap adapter configs
       dap.adapters["pwa-node"] = {
         type = "server",
         host = "localhost",
@@ -266,46 +267,66 @@ return {
           },
         }
       }
-
-      local dap_js_lang = {
-        "javascript",
-        "typescript",
+      dap.adapters["chrome"] = {
+        type = "executable",
+        command = "node",
+        args = { os.getenv("HOME") .. "/.local/share/vscode-chrome-debug/src/out/src/chromeDebug.js" },
       }
 
-      for _, language in ipairs(dap_js_lang) do
-        dap.configurations[language] = {
-          {
-            type = "pwa-node",
-            request = "launch",
-            name = "Launch file",
-            program = "${file}",
-            cwd = "${workspaceFolder}",
-            runtimeExecutable = "npx",
-            runtimeArgs = { "tsx" },
-            resolveSourceMapLocations = {
-              '${workspaceFolder}/**',
-              '!**/node_modules/**',
-            },
-            sourceMaps = true,
-            protocol = "inspector",
-            console = "integratedTerminal",
-            skipFiles = {
-              '<node_internals>/**',
-              '**/node_modules/**',
-            },
-          },
-          {
-            type = "pwa-chrome",
-            request = "launch",
-            name = "Debug Astro Client (Chrome)",
-            url = "http://localhost:4321",
-            webRoot = "${workspaceFolder}",
-            sourceMaps = true,
-            userDataDir = false,
-          },
-        }
-      end
+      -- dap launch configs
+      local pwaNodeTSConfig = {
+        type = "pwa-node",
+        request = "launch",
+        name = "run_typescript_file",
+        cwd = "${workspaceFolder}",
+        runtimeExecutable = "npx",
+        runtimeArgs = { "-y", "tsx", "${file}" },
+        sourceMaps = true,
+      }
+      local pwaNodeAstroConfig = {
+        type = "pwa-node",
+        request = "launch",
+        name = "run_astro_dev_server",
+        runtimeExecutable = "bun",
+        runtimeArgs = { "run", "dev" },
+        cwd = "${workspaceFolder}",
+        sourceMaps = true,
+        console = "integratedTerminal",
+        autoAttachChildProcesses = true,
+        resolveSourceMapLocations = {
+          "${workspaceFolder}/**",
+          "!**/node_modules/**",
+        },
+        skipFiles = {
+          "<node_internals>/**",
+          "**/node_modules/**",
+        },
+      }
+      local pwaNodeAstroChromeConfig = {
+        type = "chrome",
+        request = "launch",
+        name = "launch_chrome_with_astro_dev_server",
+        url = "http://localhost:4321",
+        webRoot = "${workspaceFolder}",
+        skipFiles = { "**/node_modules/**" },
+      }
+
+      -- dap launch configs per language
+      dap.configurations.typescript = {
+        pwaNodeAstroChromeConfig,
+        pwaNodeAstroConfig,
+        pwaNodeTSConfig,
+      }
+      dap.configurations.typescriptreact = {
+        pwaNodeAstroChromeConfig,
+        pwaNodeAstroConfig,
+        pwaNodeTSConfig,
+      }
+      dap.configurations.astro = {
+        pwaNodeAstroChromeConfig,
+        pwaNodeAstroConfig,
+        pwaNodeTSConfig,
+      }
     end
   },
-
 }
