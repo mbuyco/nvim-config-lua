@@ -75,7 +75,7 @@ local lspconfigMap = {
       ['language_server.diagnostic_exclude_paths'] = {
         'vendor/**/*',
       },
-      ['php_code_sniffer.enabled'] = true,
+      -- ['php_code_sniffer.enabled'] = true,
     },
   },
 
