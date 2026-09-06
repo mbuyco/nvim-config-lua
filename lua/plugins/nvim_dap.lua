@@ -63,7 +63,7 @@ return {
       local npmRunDevConfig = {
         type = "pwa-node",
         request = "launch",
-        name = "run_bun_dev",
+        name = "npm_run_dev",
         runtimeExecutable = "npm",
         runtimeArgs = { "run", "dev" },
         cwd = "${workspaceFolder}",
