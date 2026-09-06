@@ -163,13 +163,3 @@ return {
     end
   },
 }
-
-
--- 1. In ~/.config/nvim/lua/plugins/nvim_dap.lua:
---    - Change php adapter command = "php" → command = "node"
---    - Add pathMappings = { ["/var/www/html"] = "${workspaceFolder}
---      " } to the "Listen for Xdebug" launch config
--- 2. Verify: cd interview-test/backend && nvim, set a breakpoint in
---    src/…, run :lua require("dap").continue() (or <leader>d…),
---    then browse http://localhost:8000 — the session should attach
---    and hit the breakpoint.
