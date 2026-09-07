@@ -42,7 +42,7 @@ return {
       dap.adapters["chrome"] = {
         type = "executable",
         command = "node",
-        args = { os.getenv("HOME") .. "/.local/share/vscode-chrome-debug/src/out/src/chromeDebug.js" },
+        args = { os.getenv("HOME") .. "/.local/share/vscode-chrome-debug/out/src/chromeDebug.js" },
       }
       dap.adapters["php"] = {
         type = "executable",
