@@ -152,11 +152,12 @@ return {
         {
           type = "php",
           request = "launch",
-           name = "Listen for Xdebug",
-           port = 9003,
-           log = true,
-           pathMappings = {
-            ["/var/www/html"] = "${workspaceFolder}",
+          name = "Listen for Xdebug",
+          hostname = "0.0.0.0",
+          port = 9003,
+          log = true,
+          pathMappings = {
+            ["/var/www"] = "${workspaceFolder}",
           },
         }
       }

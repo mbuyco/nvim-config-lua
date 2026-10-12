@@ -2,6 +2,7 @@ local lsp_servers = {
   'denols',
   'emmet_language_server',
   'gopls',
+  'graphql',
   'html',
   'intelephense',
   'laravel_ls',

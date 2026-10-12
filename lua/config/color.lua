@@ -1,1 +1,1 @@
-return 'solarized'
+return 'gruvbox'
