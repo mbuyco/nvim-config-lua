@@ -2,7 +2,6 @@ return {
   "L3MON4D3/LuaSnip",
   "Xuyuanp/nerdtree-git-plugin",
   "christoomey/vim-tmux-navigator",
-  "github/copilot.vim",
   "hrsh7th/cmp-nvim-lsp",
   "hrsh7th/nvim-cmp",
   "jwalton512/vim-blade",
@@ -136,7 +135,8 @@ return {
 
   {
     "nvim-lualine/lualine.nvim",
-    opts = {
+    -- function so `minuet.lualine` (needs lualine.component) is required at setup time
+    opts = function() return {
       options = {
         icons_enabled = true,
         theme = "gruvbox",
@@ -148,7 +148,12 @@ return {
         lualine_a = {"mode", "g:coc_status", "bo:filetype"},
         lualine_b = {"branch"},
         lualine_c = {"filename"},
-        lualine_x = {"encoding", "fileformat", "filetype"},
+        lualine_x = {
+          { require("minuet.lualine"), display_on_idle = false },
+          "encoding",
+          "fileformat",
+          "filetype",
+        },
         lualine_y = {"progress"},
         lualine_z = {"location"},
       },
@@ -162,7 +167,7 @@ return {
       },
       tabline = {},
       extensions = {},
-    },
+    } end,
   },
 
   {

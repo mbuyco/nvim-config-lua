@@ -80,6 +80,19 @@ local lspconfigMap = {
     },
   },
 
+  pyright = {
+    settings = {
+      python = {
+        analysis = {
+          diagnosticSeverityOverrides = {
+            reportUnusedImport = "warning",
+            reportUnusedVariable = "warning",
+          },
+        },
+      },
+    },
+  },
+
   -- typescript config
   tsc = {
     cmd = {'tsc', '--lsp', '--stdio'},

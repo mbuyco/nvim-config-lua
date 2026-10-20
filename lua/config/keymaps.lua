@@ -88,10 +88,6 @@ for i = 1, 9 do
   end, { noremap = true, silent = true })
 end
 
--- Copilot
-vim.g.copilot_no_tab_map = true
-vim.keymap.set('i', '<leader><Tab>', 'copilot#Accept("\\<leader><Tab>")', { expr = true, replace_keycodes = false })
-
 -- nvim-dap
 vim.keymap.set("n", "<leader>db", function()
   require("dap").toggle_breakpoint()
