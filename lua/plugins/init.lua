@@ -32,6 +32,7 @@ return {
   "thesimonho/kanagawa-paper.nvim",
   "tomasiser/vim-code-dark",
   "vigoux/oak",
+  "vimcolorschemes/olive-crt.nvim",
 
   {
     "windwp/nvim-autopairs",

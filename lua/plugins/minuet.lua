@@ -11,6 +11,7 @@ local settings = {
   filetypes = {
     'blade',
     'css',
+    'conf',
     'go',
     'html',
     'javascript',
@@ -33,26 +34,32 @@ local settings = {
   -- Copilot-style keymaps. Set any entry to false to disable it.
   keymaps = {
     -- insert mode
-    accept = '<leader><Tab>', -- accept whole suggestion
+    accept = '<C-f>', -- accept whole suggestion
     accept_line = '<M-C-Right>', -- accept one line
     accept_n_lines = '<M-C-Down>', -- accept N lines (prompts for count)
-    next = '<M-]>', -- next suggestion (requests one if none shown)
-    prev = '<M-[>', -- previous suggestion (requests one if none shown)
+    next = '<M-]>', -- request a suggestion if none shown (n_completions = 1, so no cycling)
+    prev = '<M-[>', -- request a suggestion if none shown (n_completions = 1, so no cycling)
     dismiss = '<C-]>', -- dismiss suggestion
-    suggest = '<M-\\>', -- request a suggestion now
+    suggest = '<M-\\>', -- discard the current suggestion and request a new one
     -- normal mode
     toggle_auto = '<leader>at', -- toggle auto-trigger for current buffer
     change_model = '<leader>am', -- pick provider/model
   },
 }
 
+local keymaps = settings.keymaps
+
 return {
   'milanglacier/minuet-ai.nvim',
-  event = 'InsertEnter',
+  event = 'VeryLazy',
   cmd = 'Minuet',
+  keys = vim.tbl_filter(function(spec)
+    return spec[1]
+  end, {
+    { keymaps.toggle_auto, '<cmd>Minuet virtualtext toggle<cr>', desc = 'Minuet: toggle auto-trigger' },
+    { keymaps.change_model, '<cmd>Minuet change_model<cr>', desc = 'Minuet: change model' },
+  }),
   config = function()
-    local keymaps = settings.keymaps
-
     require('minuet').setup({
       provider = 'openai_fim_compatible',
       n_completions = 1,
@@ -63,7 +70,9 @@ return {
       provider_options = {
         openai_fim_compatible = {
           name = 'Ollama',
-          api_key = 'TERM', -- ollama needs no key; any always-set env var works
+          api_key = function()
+            return 'ollama'
+          end,
           end_point = settings.end_point,
           model = settings.model,
           optional = {
@@ -76,11 +85,12 @@ return {
         auto_trigger_ft = settings.filetypes,
         show_on_completion_menu = false,
         keymap = {
-          accept_line = keymaps.accept_line or nil,
-          accept_n_lines = keymaps.accept_n_lines or nil,
-          next = keymaps.next or nil,
-          prev = keymaps.prev or nil,
-          dismiss = keymaps.dismiss or nil,
+          accept = keymaps.accept,
+          accept_line = keymaps.accept_line,
+          accept_n_lines = keymaps.accept_n_lines,
+          next = keymaps.next,
+          prev = keymaps.prev,
+          dismiss = keymaps.dismiss,
         },
       },
     })
@@ -93,30 +103,12 @@ return {
       end
     end
 
-    local action = require('minuet.virtualtext').action
-
-    -- Accept falls back to typing the keys so <leader><Tab> still inserts text
-    -- when no suggestion is shown.
-    if keymaps.accept then
-      vim.keymap.set('i', keymaps.accept, function()
-        if action.is_visible() then
-          action.accept()
-        else
-          vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(keymaps.accept, true, false, true), 'n', false)
-        end
-      end, { desc = 'Minuet: accept suggestion' })
-    end
-
     if keymaps.suggest then
-      vim.keymap.set('i', keymaps.suggest, action.next, { desc = 'Minuet: request suggestion' })
-    end
-
-    if keymaps.toggle_auto then
-      vim.keymap.set('n', keymaps.toggle_auto, '<cmd>Minuet virtualtext toggle<cr>', { desc = 'Minuet: toggle auto-trigger' })
-    end
-
-    if keymaps.change_model then
-      vim.keymap.set('n', keymaps.change_model, '<cmd>Minuet change_model<cr>', { desc = 'Minuet: change model' })
+      local action = require('minuet.virtualtext').action
+      vim.keymap.set('i', keymaps.suggest, function()
+        action.dismiss()
+        action.next()
+      end, { desc = 'Minuet: request suggestion' })
     end
   end,
 }

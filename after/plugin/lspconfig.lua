@@ -11,6 +11,7 @@ local lsp_servers = {
   'pyright',
   'robotframework_ls',
   'svelte',
+  'ts_ls',
   'tsc',
   'vue_ls',
 }
@@ -25,6 +26,29 @@ vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
 local cmp_nvim_lsp = require('cmp_nvim_lsp')
 if not cmp_nvim_lsp then
   return
+end
+
+local function uses_ts7(bufnr)
+  for dir in vim.fs.parents(vim.api.nvim_buf_get_name(bufnr)) do
+    local pkg = dir .. '/node_modules/typescript/package.json'
+    if vim.uv.fs_stat(pkg) then
+      local ok, json = pcall(vim.json.decode, vim.fn.readblob(pkg))
+      local version = ok and vim.version.parse(json.version or '')
+      return version and version.major >= 7 or false
+    end
+  end
+  return false
+end
+
+local function gate_on_ts7(server, want_ts7)
+  local root_dir = vim.lsp.config[server].root_dir
+  return {
+    root_dir = function(bufnr, on_dir)
+      if uses_ts7(bufnr) == want_ts7 then
+        root_dir(bufnr, on_dir)
+      end
+    end,
+  }
 end
 
 local lspconfigMap = {
@@ -93,10 +117,8 @@ local lspconfigMap = {
     },
   },
 
-  -- typescript config
-  tsc = {
-    cmd = {'tsc', '--lsp', '--stdio'},
-  },
+  ts_ls = gate_on_ts7('ts_ls', false),
+  tsc = gate_on_ts7('tsc', true),
 }
 
 -- Enable/configure language servers
