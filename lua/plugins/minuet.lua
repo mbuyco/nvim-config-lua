@@ -6,6 +6,9 @@ local settings = {
   debounce_ms = 300, -- wait after you stop typing before requesting a completion
   throttle_ms = 1000, -- minimum interval between requests
   request_timeout = 3, -- seconds
+  -- false silences "Request failed" spam when ollama isn't running.
+  -- Set to 'debug' temporarily to troubleshoot.
+  notify = false,
   context_window = 2048, -- characters of surrounding code sent to the model
   max_tokens = 64,
   filetypes = {
@@ -66,6 +69,7 @@ return {
       throttle = settings.throttle_ms,
       debounce = settings.debounce_ms,
       request_timeout = settings.request_timeout,
+      notify = settings.notify,
       context_window = settings.context_window,
       provider_options = {
         openai_fim_compatible = {
