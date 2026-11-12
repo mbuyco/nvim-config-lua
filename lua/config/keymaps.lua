@@ -116,3 +116,7 @@ end, { desc = "DEBUGGER - Step info" })
 vim.keymap.set("n", "<leader>X", function()
   require("dap").step_out()
 end, { desc = "DEBUGGER - Step out" })
+
+-- nvimdiff
+vim.keymap.set("n", "<leader>gl", ":diffget //2<CR>", { desc = "Diffget from Left" })
+vim.keymap.set("n", "<leader>gr", ":diffget //3<CR>", { desc = "Diffget from Right" })
