@@ -82,6 +82,7 @@ return {
           optional = {
             max_tokens = settings.max_tokens,
             top_p = 0.9,
+            stop = { '\n\n' },
           },
         },
       },
@@ -97,6 +98,15 @@ return {
           dismiss = keymaps.dismiss,
         },
       },
+    })
+
+    local function set_hl()
+      vim.api.nvim_set_hl(0, 'MinuetVirtualText', { link = 'Comment', default = true })
+    end
+    set_hl()
+    vim.api.nvim_create_autocmd('ColorScheme', {
+      group = vim.api.nvim_create_augroup('MinuetHighlight', { clear = true }),
+      callback = set_hl,
     })
 
     -- minuet enables auto-trigger on FileType, which already fired for buffers
